@@ -195,7 +195,8 @@ function updateInfo() {
 
   // add info from the URL:
   util.addInfoFromUrl(expInfo);
-  
+  psychoJS.setRedirectUrls('https://app.prolific.co/submissions/complete?cc=45D0CA35', '');
+
   return Scheduler.Event.NEXT;
 }
 
