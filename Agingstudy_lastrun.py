@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.10),
-    on July 02, 2021, at 17:31
+    on July 04, 2021, at 11:56
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -37,7 +37,7 @@ os.chdir(_thisDir)
 # Store info about the experiment session
 psychopyVersion = '2020.2.10'
 expName = 'AL'  # from the Builder filename that created this script
-expInfo = {'participant*': ''}
+expInfo = {'participant': ''}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -46,7 +46,7 @@ expInfo['expName'] = expName
 expInfo['psychopyVersion'] = psychopyVersion
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant*'], expName, expInfo['date'])
+filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
 
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
@@ -2056,6 +2056,15 @@ for thisHeadphoneLoop in HeadphoneLoop:
     
 # completed 0 repeats of 'HeadphoneLoop'
 
+# get names of stimulus parameters
+if HeadphoneLoop.trialList in ([], [None], None):
+    params = []
+else:
+    params = HeadphoneLoop.trialList[0].keys()
+# save data for this loop
+HeadphoneLoop.saveAsExcel(filename + '.xlsx', sheetName='HeadphoneLoop',
+    stimOut=params,
+    dataOut=['n','all_mean','all_std', 'all_raw'])
 
 # set up handler to look after randomisation of conditions etc
 Randomization = data.TrialHandler(nReps=1, method='random', 
@@ -2313,7 +2322,7 @@ for thisRandomization in Randomization:
         MSTTrainIntroKey.keys = []
         MSTTrainIntroKey.rt = []
         _MSTTrainIntroKey_allKeys = []
-        Randomization.addData('1', Condition)
+        Randomization.addData('Condition', 1)
         
         # keep track of which components have finished
         MSTTrainIntroComponents = [MSTTrainIntroTxt, MSTTrainIntroCont, MSTTrainIntroKey]
@@ -2769,6 +2778,15 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'MSTTrainLoop'
         
+        # get names of stimulus parameters
+        if MSTTrainLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = MSTTrainLoop.trialList[0].keys()
+        # save data for this loop
+        MSTTrainLoop.saveAsExcel(filename + '.xlsx', sheetName='MSTTrainLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "MSTTestStartInstrct"-------
         continueRoutine = True
@@ -3134,10 +3152,28 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'MSTPlayLoop'
         
+        # get names of stimulus parameters
+        if MSTPlayLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = MSTPlayLoop.trialList[0].keys()
+        # save data for this loop
+        MSTPlayLoop.saveAsExcel(filename + '.xlsx', sheetName='MSTPlayLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         thisExp.nextEntry()
         
     # completed WordOrder repeats of 'MSTLoop'
     
+    # get names of stimulus parameters
+    if MSTLoop.trialList in ([], [None], None):
+        params = []
+    else:
+        params = MSTLoop.trialList[0].keys()
+    # save data for this loop
+    MSTLoop.saveAsExcel(filename + '.xlsx', sheetName='MSTLoop',
+        stimOut=params,
+        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # set up handler to look after randomisation of conditions etc
     SLLoop = data.TrialHandler(nReps=SLOrder, method='random', 
@@ -3267,7 +3303,7 @@ for thisRandomization in Randomization:
         # ------Prepare to start Routine "ExposurePrep"-------
         continueRoutine = True
         # update component parameters for each repeat
-        Randomization.addData('2', Condition)
+        Randomization.addData('Condition', 2)
         
         ExposureIntroKey.keys = []
         ExposureIntroKey.rt = []
@@ -3671,6 +3707,15 @@ for thisRandomization in Randomization:
                 
             # completed pausecheck repeats of 'PauseOnOff'
             
+            # get names of stimulus parameters
+            if PauseOnOff.trialList in ([], [None], None):
+                params = []
+            else:
+                params = PauseOnOff.trialList[0].keys()
+            # save data for this loop
+            PauseOnOff.saveAsExcel(filename + '.xlsx', sheetName='PauseOnOff',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             
             # set up handler to look after randomisation of conditions etc
             BreakOnOff = data.TrialHandler(nReps=takebreak, method='random', 
@@ -3913,10 +3958,28 @@ for thisRandomization in Randomization:
                 
             # completed takebreak repeats of 'BreakOnOff'
             
+            # get names of stimulus parameters
+            if BreakOnOff.trialList in ([], [None], None):
+                params = []
+            else:
+                params = BreakOnOff.trialList[0].keys()
+            # save data for this loop
+            BreakOnOff.saveAsExcel(filename + '.xlsx', sheetName='BreakOnOff',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
         # completed 1 repeats of 'ExposureLoop'
         
+        # get names of stimulus parameters
+        if ExposureLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = ExposureLoop.trialList[0].keys()
+        # save data for this loop
+        ExposureLoop.saveAsExcel(filename + '.xlsx', sheetName='ExposureLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "Part1Intro"-------
         continueRoutine = True
@@ -4735,6 +4798,15 @@ for thisRandomization in Randomization:
                 
             # completed 1 repeats of 'TrainTD'
             
+            # get names of stimulus parameters
+            if TrainTD.trialList in ([], [None], None):
+                params = []
+            else:
+                params = TrainTD.trialList[0].keys()
+            # save data for this loop
+            TrainTD.saveAsExcel(filename + '.xlsx', sheetName='TrainTD',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             
             # ------Prepare to start Routine "Pause1sec"-------
             continueRoutine = True
@@ -4918,6 +4990,15 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'TrainTDLoop'
         
+        # get names of stimulus parameters
+        if TrainTDLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = TrainTDLoop.trialList[0].keys()
+        # save data for this loop
+        TrainTDLoop.saveAsExcel(filename + '.xlsx', sheetName='TrainTDLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "P1IntroII"-------
         continueRoutine = True
@@ -5658,6 +5739,15 @@ for thisRandomization in Randomization:
                     
                 # completed 1 repeats of 'FirstTD'
                 
+                # get names of stimulus parameters
+                if FirstTD.trialList in ([], [None], None):
+                    params = []
+                else:
+                    params = FirstTD.trialList[0].keys()
+                # save data for this loop
+                FirstTD.saveAsExcel(filename + '.xlsx', sheetName='FirstTD',
+                    stimOut=params,
+                    dataOut=['n','all_mean','all_std', 'all_raw'])
                 
                 # ------Prepare to start Routine "Pause1sec"-------
                 continueRoutine = True
@@ -5793,6 +5883,15 @@ for thisRandomization in Randomization:
                 
             # completed 1 repeats of 'FirstTDLoop'
             
+            # get names of stimulus parameters
+            if FirstTDLoop.trialList in ([], [None], None):
+                params = []
+            else:
+                params = FirstTDLoop.trialList[0].keys()
+            # save data for this loop
+            FirstTDLoop.saveAsExcel(filename + '.xlsx', sheetName='FirstTDLoop',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             
             # ------Prepare to start Routine "AttentionCheck3"-------
             continueRoutine = True
@@ -6497,6 +6596,15 @@ for thisRandomization in Randomization:
                     
                 # completed 1 repeats of 'SecondTD'
                 
+                # get names of stimulus parameters
+                if SecondTD.trialList in ([], [None], None):
+                    params = []
+                else:
+                    params = SecondTD.trialList[0].keys()
+                # save data for this loop
+                SecondTD.saveAsExcel(filename + '.xlsx', sheetName='SecondTD',
+                    stimOut=params,
+                    dataOut=['n','all_mean','all_std', 'all_raw'])
                 
                 # ------Prepare to start Routine "Pause1sec"-------
                 continueRoutine = True
@@ -6632,6 +6740,15 @@ for thisRandomization in Randomization:
                 
             # completed 1 repeats of 'SecondTDLoop'
             
+            # get names of stimulus parameters
+            if SecondTDLoop.trialList in ([], [None], None):
+                params = []
+            else:
+                params = SecondTDLoop.trialList[0].keys()
+            # save data for this loop
+            SecondTDLoop.saveAsExcel(filename + '.xlsx', sheetName='SecondTDLoop',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             
             # ------Prepare to start Routine "AttentionCheck1"-------
             continueRoutine = True
@@ -7336,6 +7453,15 @@ for thisRandomization in Randomization:
                     
                 # completed 1 repeats of 'ThirdTD'
                 
+                # get names of stimulus parameters
+                if ThirdTD.trialList in ([], [None], None):
+                    params = []
+                else:
+                    params = ThirdTD.trialList[0].keys()
+                # save data for this loop
+                ThirdTD.saveAsExcel(filename + '.xlsx', sheetName='ThirdTD',
+                    stimOut=params,
+                    dataOut=['n','all_mean','all_std', 'all_raw'])
                 
                 # ------Prepare to start Routine "Pause1sec"-------
                 continueRoutine = True
@@ -7471,10 +7597,28 @@ for thisRandomization in Randomization:
                 
             # completed 1 repeats of 'thirdTDLoop'
             
+            # get names of stimulus parameters
+            if thirdTDLoop.trialList in ([], [None], None):
+                params = []
+            else:
+                params = thirdTDLoop.trialList[0].keys()
+            # save data for this loop
+            thirdTDLoop.saveAsExcel(filename + '.xlsx', sheetName='thirdTDLoop',
+                stimOut=params,
+                dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
         # completed 1 repeats of 'TD'
         
+        # get names of stimulus parameters
+        if TD.trialList in ([], [None], None):
+            params = []
+        else:
+            params = TD.trialList[0].keys()
+        # save data for this loop
+        TD.saveAsExcel(filename + '.xlsx', sheetName='TD',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "TakeBreak"-------
         continueRoutine = True
@@ -8062,6 +8206,15 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'FamRatingLoop'
         
+        # get names of stimulus parameters
+        if FamRatingLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = FamRatingLoop.trialList[0].keys()
+        # save data for this loop
+        FamRatingLoop.saveAsExcel(filename + '.xlsx', sheetName='FamRatingLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "AttentionCheck2"-------
         continueRoutine = True
@@ -8800,6 +8953,15 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'AFCTest'
         
+        # get names of stimulus parameters
+        if AFCTest.trialList in ([], [None], None):
+            params = []
+        else:
+            params = AFCTest.trialList[0].keys()
+        # save data for this loop
+        AFCTest.saveAsExcel(filename + '.xlsx', sheetName='AFCTest',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         
         # ------Prepare to start Routine "HearingCheckIntro"-------
         continueRoutine = True
@@ -9118,14 +9280,41 @@ for thisRandomization in Randomization:
             
         # completed 1 repeats of 'HearingcheckLoop'
         
+        # get names of stimulus parameters
+        if HearingcheckLoop.trialList in ([], [None], None):
+            params = []
+        else:
+            params = HearingcheckLoop.trialList[0].keys()
+        # save data for this loop
+        HearingcheckLoop.saveAsExcel(filename + '.xlsx', sheetName='HearingcheckLoop',
+            stimOut=params,
+            dataOut=['n','all_mean','all_std', 'all_raw'])
         thisExp.nextEntry()
         
     # completed SLOrder repeats of 'SLLoop'
     
+    # get names of stimulus parameters
+    if SLLoop.trialList in ([], [None], None):
+        params = []
+    else:
+        params = SLLoop.trialList[0].keys()
+    # save data for this loop
+    SLLoop.saveAsExcel(filename + '.xlsx', sheetName='SLLoop',
+        stimOut=params,
+        dataOut=['n','all_mean','all_std', 'all_raw'])
     thisExp.nextEntry()
     
 # completed 1 repeats of 'Randomization'
 
+# get names of stimulus parameters
+if Randomization.trialList in ([], [None], None):
+    params = []
+else:
+    params = Randomization.trialList[0].keys()
+# save data for this loop
+Randomization.saveAsExcel(filename + '.xlsx', sheetName='Randomization',
+    stimOut=params,
+    dataOut=['n','all_mean','all_std', 'all_raw'])
 
 # ------Prepare to start Routine "P2End"-------
 continueRoutine = True

@@ -854,7 +854,6 @@ function experimentInit() {
   // Initialize components for Routine "ExposurePrep"
   ExposurePrepClock = new util.Clock();
   c = Math.floor((Math.random() * 3)+1);
-  c = 1;
   cond = c.toString();
   
   ExposureIntro = new visual.TextStim({
@@ -2820,7 +2819,7 @@ function HeadphoneLoopLoopBegin(HeadphoneLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   HeadphoneLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'Headphone_check.xlsx',
     seed: undefined, name: 'HeadphoneLoop'
@@ -4299,7 +4298,7 @@ function MSTTrainIntroRoutineBegin(snapshot) {
     MSTTrainIntroKey.keys = undefined;
     MSTTrainIntroKey.rt = undefined;
     _MSTTrainIntroKey_allKeys = [];
-    Randomization.addData("1", Condition);
+    Randomization.addData("Condition", 1);
     
     // keep track of which components have finished
     MSTTrainIntroComponents = [];
@@ -5379,6 +5378,8 @@ function ExposurePrepRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
+    Randomization.addData('Condition', 2)
+    
     ExposureIntroKey.keys = undefined;
     ExposureIntroKey.rt = undefined;
     _ExposureIntroKey_allKeys = [];
