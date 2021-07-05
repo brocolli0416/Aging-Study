@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.10),
-    on July 04, 2021, at 11:56
+    on July 05, 2021, at 10:22
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -51,7 +51,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\wangs\\OneDrive - The University of Western Ontario\\Desktop\\Project BL\\Aging Study\\Agingstudy_lastrun.py',
+    originPath='C:\\Users\\wangs\\OneDrive - The University of Western Ontario\\Desktop\\ProjectBL\\AgingStudy\\Agingstudy_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -374,7 +374,7 @@ ExposurePrepClock = core.Clock()
 # Choose the scrambling condition file
 import random
 c = random.randint(1, 3)
-c = 1
+#c = 1
 cond = str(c) # Used as the file for the PlayTD loop
 
 
@@ -2207,6 +2207,7 @@ for thisRandomization in Randomization:
             MSTLoop.addData('ContinueKey8.rt', ContinueKey8.rt)
         MSTLoop.addData('ContinueKey8.started', ContinueKey8.tStartRefresh)
         MSTLoop.addData('ContinueKey8.stopped', ContinueKey8.tStopRefresh)
+        Randomization.finished = True
         # the Routine "MSTWelcome" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -2910,7 +2911,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        MSTPlayLoop = data.TrialHandler(nReps=1, method='sequential', 
+        MSTPlayLoop = data.TrialHandler(nReps=0, method='sequential', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions('testSound.xlsx', selection=condition),
             seed=None, name='MSTPlayLoop')
@@ -3150,7 +3151,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'MSTPlayLoop'
+        # completed 0 repeats of 'MSTPlayLoop'
         
         # get names of stimulus parameters
         if MSTPlayLoop.trialList in ([], [None], None):
@@ -3297,6 +3298,7 @@ for thisRandomization in Randomization:
         SLLoop.addData('ContinueButton.stopped', ContinueButton.tStopRefresh)
         SLLoop.addData('ContinueTxt.started', ContinueTxt.tStartRefresh)
         SLLoop.addData('ContinueTxt.stopped', ContinueTxt.tStopRefresh)
+        Randomization.finished = True
         # the Routine "SLWelcome" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -3409,7 +3411,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        ExposureLoop = data.TrialHandler(nReps=1, method='sequential', 
+        ExposureLoop = data.TrialHandler(nReps=0, method='sequential', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_new_list.xlsx", selection='0:1080'),
             seed=None, name='ExposureLoop')
@@ -3969,7 +3971,7 @@ for thisRandomization in Randomization:
                 dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'ExposureLoop'
+        # completed 0 repeats of 'ExposureLoop'
         
         # get names of stimulus parameters
         if ExposureLoop.trialList in ([], [None], None):
@@ -4183,7 +4185,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        TrainTDLoop = data.TrialHandler(nReps=1, method='random', 
+        TrainTDLoop = data.TrialHandler(nReps=0, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions('TargetSyllables.xlsx', selection='216:218'),
             seed=None, name='TrainTDLoop')
@@ -4988,7 +4990,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'TrainTDLoop'
+        # completed 0 repeats of 'TrainTDLoop'
         
         # get names of stimulus parameters
         if TrainTDLoop.trialList in ([], [None], None):
@@ -5139,7 +5141,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        TD = data.TrialHandler(nReps=1, method='random', 
+        TD = data.TrialHandler(nReps=0, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=[None],
             seed=None, name='TD')
@@ -7608,7 +7610,7 @@ for thisRandomization in Randomization:
                 dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'TD'
+        # completed 0 repeats of 'TD'
         
         # get names of stimulus parameters
         if TD.trialList in ([], [None], None):
@@ -7939,7 +7941,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        FamRatingLoop = data.TrialHandler(nReps=1, method='random', 
+        FamRatingLoop = data.TrialHandler(nReps=0, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_explicit.xlsx", selection='0:12'),
             seed=None, name='FamRatingLoop')
@@ -8204,7 +8206,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'FamRatingLoop'
+        # completed 0 repeats of 'FamRatingLoop'
         
         # get names of stimulus parameters
         if FamRatingLoop.trialList in ([], [None], None):
@@ -8443,7 +8445,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        AFCTest = data.TrialHandler(nReps=1, method='random', 
+        AFCTest = data.TrialHandler(nReps=0, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_explicit.xlsx", selection='12:28'),
             seed=None, name='AFCTest')
@@ -8951,7 +8953,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 1 repeats of 'AFCTest'
+        # completed 0 repeats of 'AFCTest'
         
         # get names of stimulus parameters
         if AFCTest.trialList in ([], [None], None):

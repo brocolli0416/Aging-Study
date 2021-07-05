@@ -65,103 +65,103 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'Headphone/t3_2.wav', 'path': 'Headphone/t3_2.wav'},
-    {'name': 'TestWords/DAY_MO_PU.wav', 'path': 'TestWords/DAY_MO_PU.wav'},
-    {'name': '2_TD_list.xlsx', 'path': '2_TD_list.xlsx'},
-    {'name': 'Headphone/t2_2.wav', 'path': 'Headphone/t2_2.wav'},
-    {'name': 'Headphone/t3_1.wav', 'path': 'Headphone/t3_1.wav'},
-    {'name': 'SL_Sounds/ko.wav', 'path': 'SL_Sounds/ko.wav'},
-    {'name': 'SL_Sounds/pu.wav', 'path': 'SL_Sounds/pu.wav'},
-    {'name': 'TestWords/WAI_NA_VU.wav', 'path': 'TestWords/WAI_NA_VU.wav'},
-    {'name': 'HearingCheckSounds.xlsx', 'path': 'HearingCheckSounds.xlsx'},
-    {'name': 'TestWords/TAI_GI_SA.wav', 'path': 'TestWords/TAI_GI_SA.wav'},
-    {'name': 'SL_Sounds/My Syllables/LO.wav', 'path': 'SL_Sounds/My Syllables/LO.wav'},
-    {'name': 'TestWords/BA_KAY_LI.wav', 'path': 'TestWords/BA_KAY_LI.wav'},
-    {'name': 'TestWords/PU_DAY_MO.wav', 'path': 'TestWords/PU_DAY_MO.wav'},
-    {'name': 'TestWords/CHU_LA_PAY.wav', 'path': 'TestWords/CHU_LA_PAY.wav'},
-    {'name': 'SL_Sounds/My Syllables/TU.wav', 'path': 'SL_Sounds/My Syllables/TU.wav'},
-    {'name': 'TestWords/GA_MU_ZI.wav', 'path': 'TestWords/GA_MU_ZI.wav'},
-    {'name': 'SL_Sounds/My Syllables/PA.wav', 'path': 'SL_Sounds/My Syllables/PA.wav'},
-    {'name': 'TestWords/RAI_ZO_FU.wav', 'path': 'TestWords/RAI_ZO_FU.wav'},
-    {'name': 'SL_Sounds/ti.wav', 'path': 'SL_Sounds/ti.wav'},
-    {'name': 'TestWords/VAI_HO_LA.wav', 'path': 'TestWords/VAI_HO_LA.wav'},
-    {'name': 'SL_Sounds/fu.wav', 'path': 'SL_Sounds/fu.wav'},
-    {'name': 'SL_Sounds/me.wav', 'path': 'SL_Sounds/me.wav'},
-    {'name': 'TDTrainList.xlsx', 'path': 'TDTrainList.xlsx'},
-    {'name': 'TestWords/SA_TAI_GI.wav', 'path': 'TestWords/SA_TAI_GI.wav'},
-    {'name': 'TestWords/GI_SA_TAI.wav', 'path': 'TestWords/GI_SA_TAI.wav'},
-    {'name': 'volumeadjust.wav', 'path': 'volumeadjust.wav'},
-    {'name': 'Training/FO_YI_LAY.wav', 'path': 'Training/FO_YI_LAY.wav'},
-    {'name': 'TestWords/FU_RAI_ZO.wav', 'path': 'TestWords/FU_RAI_ZO.wav'},
-    {'name': 'TestWords/LA_ZAY_CHAI.wav', 'path': 'TestWords/LA_ZAY_CHAI.wav'},
-    {'name': 'Headphone/t1_1.wav', 'path': 'Headphone/t1_1.wav'},
-    {'name': 'Training/JAY_YO_BU.wav', 'path': 'Training/JAY_YO_BU.wav'},
-    {'name': 'TestWords/KAY_LI_BA.wav', 'path': 'TestWords/KAY_LI_BA.wav'},
-    {'name': 'trainSound.xlsx', 'path': 'trainSound.xlsx'},
-    {'name': 'TestWords/ZO_RAI_FU.wav', 'path': 'TestWords/ZO_RAI_FU.wav'},
-    {'name': 'TestWords/GU_CHAI_PI.wav', 'path': 'TestWords/GU_CHAI_PI.wav'},
-    {'name': 'SL_Sounds/ta.wav', 'path': 'SL_Sounds/ta.wav'},
-    {'name': 'TestWords/NU_CHAY_SO.wav', 'path': 'TestWords/NU_CHAY_SO.wav'},
-    {'name': 'TestWords/FI_GU_CHA.wav', 'path': 'TestWords/FI_GU_CHA.wav'},
-    {'name': 'SL_Sounds/ge.wav', 'path': 'SL_Sounds/ge.wav'},
-    {'name': 'SL_Sounds/My Syllables/KU.wav', 'path': 'SL_Sounds/My Syllables/KU.wav'},
-    {'name': 'TestWords/MO_DAY_PU.wav', 'path': 'TestWords/MO_DAY_PU.wav'},
-    {'name': 'TestWords/NA_VU_WAI.wav', 'path': 'TestWords/NA_VU_WAI.wav'},
-    {'name': 'TestWords/PU_MO_DAY.wav', 'path': 'TestWords/PU_MO_DAY.wav'},
-    {'name': 'Counterbalance.xlsx', 'path': 'Counterbalance.xlsx'},
-    {'name': '2_explicit.xlsx', 'path': '2_explicit.xlsx'},
-    {'name': 'SL_Sounds/fe.wav', 'path': 'SL_Sounds/fe.wav'},
-    {'name': '1_explicit.xlsx', 'path': '1_explicit.xlsx'},
-    {'name': 'TestWords/HO_NAY_VA.wav', 'path': 'TestWords/HO_NAY_VA.wav'},
-    {'name': 'TestWords/DA_CHU_VAI.wav', 'path': 'TestWords/DA_CHU_VAI.wav'},
-    {'name': 'TestWords/NA_WAI_VU.wav', 'path': 'TestWords/NA_WAI_VU.wav'},
-    {'name': 'TestWords/NO_WA_BAY.wav', 'path': 'TestWords/NO_WA_BAY.wav'},
-    {'name': 'TestWords/PAI_LU_WA.wav', 'path': 'TestWords/PAI_LU_WA.wav'},
     {'name': '3_new_list.xlsx', 'path': '3_new_list.xlsx'},
-    {'name': 'testSound.xlsx', 'path': 'testSound.xlsx'},
-    {'name': 'TestWords/SI_VAI_CHU.wav', 'path': 'TestWords/SI_VAI_CHU.wav'},
-    {'name': 'Headphone_check.xlsx', 'path': 'Headphone_check.xlsx'},
-    {'name': 'TestWords/LI_KAY_BA.wav', 'path': 'TestWords/LI_KAY_BA.wav'},
-    {'name': '2_new_list.xlsx', 'path': '2_new_list.xlsx'},
-    {'name': '3_explicit.xlsx', 'path': '3_explicit.xlsx'},
-    {'name': 'SL_Sounds/My Syllables/DO.wav', 'path': 'SL_Sounds/My Syllables/DO.wav'},
-    {'name': 'TestWords/HA_SI_JAI.wav', 'path': 'TestWords/HA_SI_JAI.wav'},
-    {'name': 'TestWords/TAI_SA_GI.wav', 'path': 'TestWords/TAI_SA_GI.wav'},
-    {'name': 'TestWords/FU_ZO_RAI.wav', 'path': 'TestWords/FU_ZO_RAI.wav'},
-    {'name': '1_new_list.xlsx', 'path': '1_new_list.xlsx'},
-    {'name': 'SL_Sounds/ru.wav', 'path': 'SL_Sounds/ru.wav'},
-    {'name': 'TestWords/RAY_PA_TI.wav', 'path': 'TestWords/RAY_PA_TI.wav'},
-    {'name': 'TestWords/KAI_LAY_TA.wav', 'path': 'TestWords/KAI_LAY_TA.wav'},
-    {'name': 'SL_Sounds/ni.wav', 'path': 'SL_Sounds/ni.wav'},
-    {'name': 'Headphone/t1_2.wav', 'path': 'Headphone/t1_2.wav'},
-    {'name': 'TestWords/WAI_RO_JU.wav', 'path': 'TestWords/WAI_RO_JU.wav'},
-    {'name': 'SL_Sounds/My Syllables/WI.wav', 'path': 'SL_Sounds/My Syllables/WI.wav'},
-    {'name': 'TestWords/DAY_PU_MO.wav', 'path': 'TestWords/DAY_PU_MO.wav'},
+    {'name': 'trainSound.xlsx', 'path': 'trainSound.xlsx'},
     {'name': 'TestWords/HI_NAY_VA.wav', 'path': 'TestWords/HI_NAY_VA.wav'},
-    {'name': 'TargetSyllables.xlsx', 'path': 'TargetSyllables.xlsx'},
+    {'name': 'SL_Sounds/ti.wav', 'path': 'SL_Sounds/ti.wav'},
+    {'name': 'SL_Sounds/fu.wav', 'path': 'SL_Sounds/fu.wav'},
+    {'name': 'TestWords/NO_WA_BAY.wav', 'path': 'TestWords/NO_WA_BAY.wav'},
+    {'name': 'SL_Sounds/me.wav', 'path': 'SL_Sounds/me.wav'},
+    {'name': 'Headphone/t3_1.wav', 'path': 'Headphone/t3_1.wav'},
+    {'name': 'TestWords/DA_CHU_VAI.wav', 'path': 'TestWords/DA_CHU_VAI.wav'},
+    {'name': 'TestWords/KAI_LAY_TA.wav', 'path': 'TestWords/KAI_LAY_TA.wav'},
+    {'name': 'TestWords/FI_GU_CHA.wav', 'path': 'TestWords/FI_GU_CHA.wav'},
     {'name': 'SL_Sounds/My Syllables/TI.wav', 'path': 'SL_Sounds/My Syllables/TI.wav'},
+    {'name': 'TDTrainList.xlsx', 'path': 'TDTrainList.xlsx'},
+    {'name': 'SL_Sounds/My Syllables/DO.wav', 'path': 'SL_Sounds/My Syllables/DO.wav'},
+    {'name': 'testSound.xlsx', 'path': 'testSound.xlsx'},
+    {'name': 'TestWords/LI_KAY_BA.wav', 'path': 'TestWords/LI_KAY_BA.wav'},
     {'name': 'Headphone/t2_1.wav', 'path': 'Headphone/t2_1.wav'},
-    {'name': 'TestWords/ZO_FU_RAI.wav', 'path': 'TestWords/ZO_FU_RAI.wav'},
-    {'name': 'TestWords/SA_GI_TAI.wav', 'path': 'TestWords/SA_GI_TAI.wav'},
-    {'name': 'SL_Sounds/My Syllables/DA.wav', 'path': 'SL_Sounds/My Syllables/DA.wav'},
-    {'name': 'Training/YO_BU_JAY.wav', 'path': 'Training/YO_BU_JAY.wav'},
-    {'name': 'TestWords/LI_BA_KAY.wav', 'path': 'TestWords/LI_BA_KAY.wav'},
-    {'name': '3_TD_list.xlsx', 'path': '3_TD_list.xlsx'},
-    {'name': 'SL_Sounds/su.wav', 'path': 'SL_Sounds/su.wav'},
-    {'name': 'TestWords/VU_WAI_NA.wav', 'path': 'TestWords/VU_WAI_NA.wav'},
-    {'name': 'TestWords/DAI_RU_CHI.wav', 'path': 'TestWords/DAI_RU_CHI.wav'},
-    {'name': 'SL_Sounds/re.wav', 'path': 'SL_Sounds/re.wav'},
-    {'name': 'TestWords/KO_SU_FAI.wav', 'path': 'TestWords/KO_SU_FAI.wav'},
-    {'name': 'TestWords/WAI_VU_NA.wav', 'path': 'TestWords/WAI_VU_NA.wav'},
-    {'name': 'TestWords/MO_PU_DAY.wav', 'path': 'TestWords/MO_PU_DAY.wav'},
-    {'name': 'TestWords/LU_HAI_BO.wav', 'path': 'TestWords/LU_HAI_BO.wav'},
-    {'name': 'TestWords/RAI_FU_ZO.wav', 'path': 'TestWords/RAI_FU_ZO.wav'},
-    {'name': 'SL_Sounds/My Syllables/PI.wav', 'path': 'SL_Sounds/My Syllables/PI.wav'},
-    {'name': '1_TD_list.xlsx', 'path': '1_TD_list.xlsx'},
+    {'name': 'TestWords/WAI_RO_JU.wav', 'path': 'TestWords/WAI_RO_JU.wav'},
+    {'name': 'Training/FO_YI_LAY.wav', 'path': 'Training/FO_YI_LAY.wav'},
     {'name': 'TestWords/KAY_BA_LI.wav', 'path': 'TestWords/KAY_BA_LI.wav'},
+    {'name': 'SL_Sounds/My Syllables/WI.wav', 'path': 'SL_Sounds/My Syllables/WI.wav'},
+    {'name': 'TestWords/KO_SU_FAI.wav', 'path': 'TestWords/KO_SU_FAI.wav'},
+    {'name': 'TestWords/PAI_LU_WA.wav', 'path': 'TestWords/PAI_LU_WA.wav'},
+    {'name': 'SL_Sounds/ge.wav', 'path': 'SL_Sounds/ge.wav'},
+    {'name': 'TestWords/NA_WAI_VU.wav', 'path': 'TestWords/NA_WAI_VU.wav'},
+    {'name': 'TestWords/GI_SA_TAI.wav', 'path': 'TestWords/GI_SA_TAI.wav'},
+    {'name': 'TestWords/VAI_HO_LA.wav', 'path': 'TestWords/VAI_HO_LA.wav'},
+    {'name': '1_new_list.xlsx', 'path': '1_new_list.xlsx'},
+    {'name': 'TestWords/DAY_MO_PU.wav', 'path': 'TestWords/DAY_MO_PU.wav'},
+    {'name': 'SL_Sounds/My Syllables/DA.wav', 'path': 'SL_Sounds/My Syllables/DA.wav'},
+    {'name': 'Headphone_check.xlsx', 'path': 'Headphone_check.xlsx'},
+    {'name': 'TestWords/LU_HAI_BO.wav', 'path': 'TestWords/LU_HAI_BO.wav'},
+    {'name': 'TestWords/LI_BA_KAY.wav', 'path': 'TestWords/LI_BA_KAY.wav'},
+    {'name': 'TestWords/ZO_FU_RAI.wav', 'path': 'TestWords/ZO_FU_RAI.wav'},
+    {'name': 'TestWords/DAI_RU_CHI.wav', 'path': 'TestWords/DAI_RU_CHI.wav'},
+    {'name': 'TestWords/PU_MO_DAY.wav', 'path': 'TestWords/PU_MO_DAY.wav'},
+    {'name': 'SL_Sounds/My Syllables/KU.wav', 'path': 'SL_Sounds/My Syllables/KU.wav'},
+    {'name': 'TestWords/RAY_PA_TI.wav', 'path': 'TestWords/RAY_PA_TI.wav'},
+    {'name': 'TestWords/PU_DAY_MO.wav', 'path': 'TestWords/PU_DAY_MO.wav'},
+    {'name': 'Headphone/t3_2.wav', 'path': 'Headphone/t3_2.wav'},
+    {'name': 'SL_Sounds/fe.wav', 'path': 'SL_Sounds/fe.wav'},
+    {'name': 'TestWords/CHU_LA_PAY.wav', 'path': 'TestWords/CHU_LA_PAY.wav'},
     {'name': 'TestWords/BA_LI_KAY.wav', 'path': 'TestWords/BA_LI_KAY.wav'},
+    {'name': 'SL_Sounds/ta.wav', 'path': 'SL_Sounds/ta.wav'},
+    {'name': 'TestWords/RAI_ZO_FU.wav', 'path': 'TestWords/RAI_ZO_FU.wav'},
     {'name': 'TestWords/VU_NA_WAI.wav', 'path': 'TestWords/VU_NA_WAI.wav'},
-    {'name': 'TestWords/GI_TAI_SA.wav', 'path': 'TestWords/GI_TAI_SA.wav'}
+    {'name': 'SL_Sounds/My Syllables/TU.wav', 'path': 'SL_Sounds/My Syllables/TU.wav'},
+    {'name': 'SL_Sounds/re.wav', 'path': 'SL_Sounds/re.wav'},
+    {'name': 'TestWords/TAI_SA_GI.wav', 'path': 'TestWords/TAI_SA_GI.wav'},
+    {'name': 'Headphone/t1_2.wav', 'path': 'Headphone/t1_2.wav'},
+    {'name': 'TestWords/NU_CHAY_SO.wav', 'path': 'TestWords/NU_CHAY_SO.wav'},
+    {'name': 'TestWords/RAI_FU_ZO.wav', 'path': 'TestWords/RAI_FU_ZO.wav'},
+    {'name': 'SL_Sounds/ni.wav', 'path': 'SL_Sounds/ni.wav'},
+    {'name': 'TestWords/VU_WAI_NA.wav', 'path': 'TestWords/VU_WAI_NA.wav'},
+    {'name': 'TestWords/SA_TAI_GI.wav', 'path': 'TestWords/SA_TAI_GI.wav'},
+    {'name': 'SL_Sounds/My Syllables/LO.wav', 'path': 'SL_Sounds/My Syllables/LO.wav'},
+    {'name': 'TestWords/ZO_RAI_FU.wav', 'path': 'TestWords/ZO_RAI_FU.wav'},
+    {'name': 'TestWords/TAI_GI_SA.wav', 'path': 'TestWords/TAI_GI_SA.wav'},
+    {'name': 'TestWords/KAY_LI_BA.wav', 'path': 'TestWords/KAY_LI_BA.wav'},
+    {'name': 'TestWords/FU_RAI_ZO.wav', 'path': 'TestWords/FU_RAI_ZO.wav'},
+    {'name': 'TestWords/SA_GI_TAI.wav', 'path': 'TestWords/SA_GI_TAI.wav'},
+    {'name': 'TestWords/WAI_NA_VU.wav', 'path': 'TestWords/WAI_NA_VU.wav'},
+    {'name': 'Training/JAY_YO_BU.wav', 'path': 'Training/JAY_YO_BU.wav'},
+    {'name': '3_explicit.xlsx', 'path': '3_explicit.xlsx'},
+    {'name': '2_TD_list.xlsx', 'path': '2_TD_list.xlsx'},
+    {'name': '1_TD_list.xlsx', 'path': '1_TD_list.xlsx'},
+    {'name': 'TestWords/DAY_PU_MO.wav', 'path': 'TestWords/DAY_PU_MO.wav'},
+    {'name': '2_new_list.xlsx', 'path': '2_new_list.xlsx'},
+    {'name': 'TestWords/LA_ZAY_CHAI.wav', 'path': 'TestWords/LA_ZAY_CHAI.wav'},
+    {'name': 'SL_Sounds/su.wav', 'path': 'SL_Sounds/su.wav'},
+    {'name': 'TestWords/GI_TAI_SA.wav', 'path': 'TestWords/GI_TAI_SA.wav'},
+    {'name': '3_TD_list.xlsx', 'path': '3_TD_list.xlsx'},
+    {'name': 'TestWords/GA_MU_ZI.wav', 'path': 'TestWords/GA_MU_ZI.wav'},
+    {'name': 'SL_Sounds/My Syllables/PI.wav', 'path': 'SL_Sounds/My Syllables/PI.wav'},
+    {'name': 'SL_Sounds/ru.wav', 'path': 'SL_Sounds/ru.wav'},
+    {'name': 'TargetSyllables.xlsx', 'path': 'TargetSyllables.xlsx'},
+    {'name': 'TestWords/GU_CHAI_PI.wav', 'path': 'TestWords/GU_CHAI_PI.wav'},
+    {'name': 'TestWords/WAI_VU_NA.wav', 'path': 'TestWords/WAI_VU_NA.wav'},
+    {'name': 'TestWords/BA_KAY_LI.wav', 'path': 'TestWords/BA_KAY_LI.wav'},
+    {'name': 'SL_Sounds/ko.wav', 'path': 'SL_Sounds/ko.wav'},
+    {'name': 'Headphone/t1_1.wav', 'path': 'Headphone/t1_1.wav'},
+    {'name': 'TestWords/MO_PU_DAY.wav', 'path': 'TestWords/MO_PU_DAY.wav'},
+    {'name': 'volumeadjust.wav', 'path': 'volumeadjust.wav'},
+    {'name': 'TestWords/MO_DAY_PU.wav', 'path': 'TestWords/MO_DAY_PU.wav'},
+    {'name': '2_explicit.xlsx', 'path': '2_explicit.xlsx'},
+    {'name': 'TestWords/HA_SI_JAI.wav', 'path': 'TestWords/HA_SI_JAI.wav'},
+    {'name': 'SL_Sounds/pu.wav', 'path': 'SL_Sounds/pu.wav'},
+    {'name': 'Headphone/t2_2.wav', 'path': 'Headphone/t2_2.wav'},
+    {'name': 'TestWords/NA_VU_WAI.wav', 'path': 'TestWords/NA_VU_WAI.wav'},
+    {'name': 'HearingCheckSounds.xlsx', 'path': 'HearingCheckSounds.xlsx'},
+    {'name': 'TestWords/HO_NAY_VA.wav', 'path': 'TestWords/HO_NAY_VA.wav'},
+    {'name': 'Counterbalance.xlsx', 'path': 'Counterbalance.xlsx'},
+    {'name': 'TestWords/FU_ZO_RAI.wav', 'path': 'TestWords/FU_ZO_RAI.wav'},
+    {'name': 'Training/YO_BU_JAY.wav', 'path': 'Training/YO_BU_JAY.wav'},
+    {'name': 'SL_Sounds/My Syllables/PA.wav', 'path': 'SL_Sounds/My Syllables/PA.wav'},
+    {'name': '1_explicit.xlsx', 'path': '1_explicit.xlsx'},
+    {'name': 'TestWords/SI_VAI_CHU.wav', 'path': 'TestWords/SI_VAI_CHU.wav'}
   ]
 });
 
@@ -2819,7 +2819,7 @@ function HeadphoneLoopLoopBegin(HeadphoneLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   HeadphoneLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.RANDOM,
+    nReps: 0, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'Headphone_check.xlsx',
     seed: undefined, name: 'HeadphoneLoop'
@@ -2976,7 +2976,7 @@ function MSTPlayLoopLoopBegin(MSTPlayLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   MSTPlayLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, 'testSound.xlsx', condition),
     seed: undefined, name: 'MSTPlayLoop'
@@ -3103,7 +3103,7 @@ function ExposureLoopLoopBegin(ExposureLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   ExposureLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_new_list.xlsx"), '0:1080'),
     seed: undefined, name: 'ExposureLoop'
@@ -3219,7 +3219,7 @@ function TrainTDLoopLoopBegin(TrainTDLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   TrainTDLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.RANDOM,
+    nReps: 0, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, 'TargetSyllables.xlsx', '216:218'),
     seed: undefined, name: 'TrainTDLoop'
@@ -3305,7 +3305,7 @@ function TDLoopBegin(TDLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   TD = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.RANDOM,
+    nReps: 0, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'TD'
@@ -3613,7 +3613,7 @@ function FamRatingLoopLoopBegin(FamRatingLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   FamRatingLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.RANDOM,
+    nReps: 0, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_explicit.xlsx"), '0:12'),
     seed: undefined, name: 'FamRatingLoop'
@@ -3651,7 +3651,7 @@ function AFCTestLoopBegin(AFCTestLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   AFCTest = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 1, method: TrialHandler.Method.RANDOM,
+    nReps: 0, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_explicit.xlsx"), '12:28'),
     seed: undefined, name: 'AFCTest'
@@ -4148,6 +4148,8 @@ function MSTWelcomeRoutineEnd(snapshot) {
         }
     
     ContinueKey8.stop();
+    Randomization.finished = true;
+    
     // the Routine "MSTWelcome" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
@@ -5360,6 +5362,8 @@ function SLWelcomeRoutineEnd(snapshot) {
         }
     
     ContinueButton.stop();
+    Randomization.finished = true;
+    
     // the Routine "SLWelcome" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
@@ -10254,6 +10258,10 @@ function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
+  
+  
   
   
   
