@@ -428,6 +428,7 @@ var CheckQuestion;
 var CheckRespKey;
 var P2EndClock;
 var EndAllKey;
+var FeedbackResp;
 var FeedbackQ;
 var EndMssg_Ver2;
 var globalClock;
@@ -2281,6 +2282,23 @@ function experimentInit() {
   P2EndClock = new util.Clock();
   EndAllKey = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
+  FeedbackResp = new visual.TextBox({
+    win: psychoJS.window,
+    name: 'FeedbackResp',
+    text: ' \n',
+    font: 'Times New Roman',
+    pos: [0, (- 0.4)], letterHeight: 0.03,
+    size: undefined,  units: undefined, 
+    color: 'black', colorSpace: 'rgb',
+    fillColor: 'white', borderColor: undefined,
+    bold: false, italic: false,
+    opacity: 1,
+    padding: undefined,
+    editable: true,
+    anchor: 'center',
+    depth: -1.0 
+  });
+  
   FeedbackQ = new visual.TextStim({
     win: psychoJS.window,
     name: 'FeedbackQ',
@@ -2289,7 +2307,7 @@ function experimentInit() {
     units: undefined, 
     pos: [0, (- 0.3)], height: 0.03,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
-    depth: -1.0 
+    depth: -2.0 
   });
   
   EndMssg_Ver2 = new visual.TextStim({
@@ -2300,7 +2318,7 @@ function experimentInit() {
     units: undefined, 
     pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
-    depth: -2.0 
+    depth: -3.0 
   });
   
   // Create some handy timers
@@ -2819,7 +2837,7 @@ function HeadphoneLoopLoopBegin(HeadphoneLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   HeadphoneLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: 'Headphone_check.xlsx',
     seed: undefined, name: 'HeadphoneLoop'
@@ -2976,7 +2994,7 @@ function MSTPlayLoopLoopBegin(MSTPlayLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   MSTPlayLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, 'testSound.xlsx', condition),
     seed: undefined, name: 'MSTPlayLoop'
@@ -3103,7 +3121,7 @@ function ExposureLoopLoopBegin(ExposureLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   ExposureLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
+    nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_new_list.xlsx"), '0:1080'),
     seed: undefined, name: 'ExposureLoop'
@@ -3219,7 +3237,7 @@ function TrainTDLoopLoopBegin(TrainTDLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   TrainTDLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, 'TargetSyllables.xlsx', '216:218'),
     seed: undefined, name: 'TrainTDLoop'
@@ -3305,7 +3323,7 @@ function TDLoopBegin(TDLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   TD = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: undefined,
     seed: undefined, name: 'TD'
@@ -3613,7 +3631,7 @@ function FamRatingLoopLoopBegin(FamRatingLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   FamRatingLoop = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_explicit.xlsx"), '0:12'),
     seed: undefined, name: 'FamRatingLoop'
@@ -3651,7 +3669,7 @@ function AFCTestLoopBegin(AFCTestLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   AFCTest = new TrialHandler({
     psychoJS: psychoJS,
-    nReps: 0, method: TrialHandler.Method.RANDOM,
+    nReps: 1, method: TrialHandler.Method.RANDOM,
     extraInfo: expInfo, originPath: undefined,
     trialList: TrialHandler.importConditions(psychoJS.serverManager, (cond + "_explicit.xlsx"), '12:28'),
     seed: undefined, name: 'AFCTest'
@@ -10109,6 +10127,7 @@ function P2EndRoutineBegin(snapshot) {
     // keep track of which components have finished
     P2EndComponents = [];
     P2EndComponents.push(EndAllKey);
+    P2EndComponents.push(FeedbackResp);
     P2EndComponents.push(FeedbackQ);
     P2EndComponents.push(EndMssg_Ver2);
     
@@ -10152,6 +10171,16 @@ function P2EndRoutineEachFrame(snapshot) {
       }
     }
     
+    
+    // *FeedbackResp* updates
+    if (t >= 0.0 && FeedbackResp.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      FeedbackResp.tStart = t;  // (not accounting for frame time here)
+      FeedbackResp.frameNStart = frameN;  // exact frame index
+      
+      FeedbackResp.setAutoDraw(true);
+    }
+
     
     // *FeedbackQ* updates
     if (t >= 0.0 && FeedbackQ.status === PsychoJS.Status.NOT_STARTED) {
@@ -10214,6 +10243,7 @@ function P2EndRoutineEnd(snapshot) {
         }
     
     EndAllKey.stop();
+    psychoJS.experiment.addData('FeedbackResp.text', FeedbackResp.text);
     // the Routine "P2End" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
