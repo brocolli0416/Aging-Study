@@ -1,0 +1,109 @@
+---
+title: "AgingStudy_analysisplan"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(lme4)
+```
+
+### Effect size calculation (GPower)
+
+  F tests - ANOVA: Fixed effects, omnibus, one-way
+  
+  Analysis:	A priori: Compute required sample size
+  
+	Input: Effect size f = 0.4200840
+	α err prob = 0.05
+	Power (1-β err prob) = 0.80
+	Number of groups = 2
+	Output:	Noncentrality parameter λ = 8.4705872
+	Critical F = 4.0517487
+	Numerator df = 1
+	Denominator df = 46
+	Total sample size	=	48
+	Actual power = 0.8130553
+	
+**24 subjects per age group**
+
+### Primary analysis
+
+```{r Load data file, include=FALSE}
+df = read.csv("./YAraw.csv") # Load data file as df
+```
+
+1. Group difference in lure discrimination
+```{r Lure discrimination difference - GLM}
+# Contrast code Age groups
+df$Age = as.factor(df$Age)
+df$coded_Age = contrasts(df$Age)
+
+# Run GLM
+discrimination_model = lm(Disc ~ coded_Age, data = df)
+summary(discrimination_model)
+```
+
+2. Group difference in Familiarity rating
+```{r Familiarity difference - GLM}
+df = mutate(df, fam_rating_diff = Word - Nonword)
+# Run GLM
+familiarity_model = lm(fam_rating_diff ~ coded_Age, data = df)
+summary(familiarity_model)
+```
+
+3. Group difference in AFC accuracy
+```{r AFC difference - GLM}
+# Run GLM
+AFC_model = lm(AFC ~ coded_Age, data = df)
+summary(AFC_model)
+```
+
+4. Group difference in RT effect
+```{r RT effect difference - GLM}
+df = mutate(df, RTeffect = Pos1 - Pos3)
+RT_model = lm(RTeffect ~ coded_Age, data = df)
+summary(RT_model)
+```
+### Secondary analysis
+1. Group RT effect
+```{r Group RT effect}
+rtdf = read.csv("./YA_rawRT.csv")
+rtdf[, 'Coded_Position'] = as.factor(rtdf[, 'Position'])
+class(rtdf$Coded_Position)
+contrasts(rtdf$Coded_Position) = contr.treatment(3)
+str(rtdf)
+
+positionEffect = lm(RT ~ Coded_Position, data = rtdf)
+summary(positionEffect)
+
+```
+
+
+
+2. Individual RT effect
+```{r Individual RT effect}
+# Load individual raw RT data file
+#rtdf = read.csv("./YA_rawRT.csv")
+subject_list = as.list(distinct(rtdf, Subject))
+class(subject_list)
+#subject_vector = c(1, 2, 3)
+c = 0
+print(length(subject_list)[1])
+for (i in subject_list){
+  for (x in i){
+    single_subj = rtdf %>%
+      filter(Subject == x)
+    positionEffect = lm(RT ~ Coded_Position, data = single_subj)
+    print(x)
+    print(stat(positionEffect))
+    #View(single_subj)
+    
+  }
+  }
+
+```
+

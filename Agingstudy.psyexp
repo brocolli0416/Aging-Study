@@ -2481,14 +2481,14 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
         <Param name="volume" updates="constant" val="1" valType="code"/>
       </SoundComponent>
-      <KeyboardComponent name="MSTTestOptionKeys">
+      <KeyboardComponent name="MST_resp">
         <Param name="allowedKeys" updates="constant" val="'1', '2', " valType="code"/>
-        <Param name="correctAns" updates="constant" val="$Correct" valType="str"/>
+        <Param name="correctAns" updates="constant" val="$WordCorrect" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
-        <Param name="name" updates="None" val="MSTTestOptionKeys" valType="code"/>
+        <Param name="name" updates="None" val="MST_resp" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
