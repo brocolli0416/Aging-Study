@@ -1,8 +1,0 @@
-Welcome0Continue.keys,Welcome0Continue.rt,SoundCheckBegin.keys,SoundCheckBegin.rt,SoundCheckEndKey.keys,SoundCheckEndKey.rt,HeadphoneContinueKey.keys,HeadphoneContinueKey.rt,ContinueKey8.keys,ContinueKey8.rt,MSTWelcomeContKey.keys,MSTWelcomeContKey.rt,Condition,MSTTrainIntroKey.keys,MSTTrainIntroKey.rt,MSTTrainKeys.keys,MSTTrainKeys.corr,MSTTrainKeys.rt,MSTTrainLoop.thisRepN,MSTTrainLoop.thisTrialN,MSTTrainLoop.thisN,MSTTrainLoop.thisIndex,MSTTrainLoop.ran,SoundFile,Type,Correct,participant,date,expName,psychopyVersion,OS,frameRate,MSTTestBeginKey.keys,MSTTestBeginKey.rt,MSTLoop.thisRepN,MSTLoop.thisTrialN,MSTLoop.thisN,MSTLoop.thisIndex,MSTLoop.ran,EndAllKey.keys,EndAllKey.rt
-space,1.6466,space,1.3781,space,0.496,space,0.8559,space,1.1083,space,0.5343,1,space,0.5986,2,1,1.3437,0,0,0,0,1,Training/FO_YI_LAY.wav,NEW,2,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,,
-,,,,,,,,,,,,,,,1,1,0.2934,0,1,1,1,1,Training/FO_YI_LAY.wav,OLD,1,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,,
-,,,,,,,,,,,,,,,2,1,0.3022,0,2,2,2,1,Training/YO_BU_JAY.wav,NEW,2,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,,
-,,,,,,,,,,,,,,,1,0,0.3824,0,3,3,3,1,Training/JAY_YO_BU.wav,SIMILAR,2,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,,
-,,,,,,,,,,,,,,,1,1,0.4548,0,4,4,4,1,Training/FO_YI_LAY.wav,OLD,1,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,space,1.4029,0,0,0,0,1,,
-,,,,,,,,,,,,,,,,,,,,,,,,,,,2021-07-05_10h34.39.891,Agingstudy,2020.2.10,Win32,60,,,,,,,,return,6.5987

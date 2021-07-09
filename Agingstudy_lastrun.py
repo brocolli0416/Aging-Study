@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2020.2.10),
-    on July 05, 2021, at 10:22
+    on July 08, 2021, at 21:03
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -79,6 +79,40 @@ else:
 
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
+
+# Initialize components for Routine "P2End"
+P2EndClock = core.Clock()
+EndAllKey = keyboard.Keyboard()
+FeedbackResp = visual.TextBox2(
+     win, text=' \n', font='Times New Roman',
+     pos=(0, -0.4),     letterHeight=0.03,
+     size=None, borderWidth=2.0,
+     color='black', colorSpace='rgb',
+     opacity=1,
+     bold=False, italic=False,
+     lineSpacing=1.0,
+     padding=None,
+     anchor='center',
+     fillColor='white', borderColor=None,
+     flipHoriz=False, flipVert=False,
+     editable=True,
+     name='FeedbackResp',
+     autoLog=True,
+)
+FeedbackQ = visual.TextStim(win=win, name='FeedbackQ',
+    text='Please use this section to leave any comment or feedback on the study. (Was there any technical difficulty? Any instruction that was unclear? etc.)',
+    font='Times New Roman',
+    pos=(0, -0.3), height=0.03, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-2.0);
+EndMssg_Ver2 = visual.TextStim(win=win, name='EndMssg_Ver2',
+    text='Thank you for completing the tasks! We appreciate your time and cooporation. \n\nYou may now exit the study by pressing ENTER. You will then see a green dialog box that indicates that your data has been successfully saved. Once you click "OK", you will be directed back to Prolific with your completion code.\nPLEASE DO NOT CLOSE THIS WINDOW.',
+    font='Arial',
+    pos=(0, 0.1), height=0.04, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-3.0);
 
 # Initialize components for Routine "Welcome0"
 Welcome0Clock = core.Clock()
@@ -335,7 +369,7 @@ MSTTestOptions = visual.TextStim(win=win, name='MSTTestOptions',
 MSTTestPlay = sound.Sound('A', secs=-1, stereo=True, hamming=True,
     name='MSTTestPlay')
 MSTTestPlay.setVolume(1)
-MSTTestOptionKeys = keyboard.Keyboard()
+MST_resp = keyboard.Keyboard()
 MSTTestTrialNum = visual.TextStim(win=win, name='MSTTestTrialNum',
     text='default text',
     font='Arial',
@@ -1374,24 +1408,160 @@ CheckRespKey = keyboard.Keyboard()
 # Initialize components for Routine "P2End"
 P2EndClock = core.Clock()
 EndAllKey = keyboard.Keyboard()
+FeedbackResp = visual.TextBox2(
+     win, text=' \n', font='Times New Roman',
+     pos=(0, -0.4),     letterHeight=0.03,
+     size=None, borderWidth=2.0,
+     color='black', colorSpace='rgb',
+     opacity=1,
+     bold=False, italic=False,
+     lineSpacing=1.0,
+     padding=None,
+     anchor='center',
+     fillColor='white', borderColor=None,
+     flipHoriz=False, flipVert=False,
+     editable=True,
+     name='FeedbackResp',
+     autoLog=True,
+)
 FeedbackQ = visual.TextStim(win=win, name='FeedbackQ',
     text='Please use this section to leave any comment or feedback on the study. (Was there any technical difficulty? Any instruction that was unclear? etc.)',
     font='Times New Roman',
     pos=(0, -0.3), height=0.03, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=-2.0);
 EndMssg_Ver2 = visual.TextStim(win=win, name='EndMssg_Ver2',
-    text='Thank you for completing the tasks! We appreciate your time and cooporation. \n\nYou may now exit the study by pressing ENTER.\nOnce you exit the study, you will be redirected back to prolific where you will receive your completion code.\n',
+    text='Thank you for completing the tasks! We appreciate your time and cooporation. \n\nYou may now exit the study by pressing ENTER. You will then see a green dialog box that indicates that your data has been successfully saved. Once you click "OK", you will be directed back to Prolific with your completion code.\nPLEASE DO NOT CLOSE THIS WINDOW.',
     font='Arial',
-    pos=(0, 0), height=0.04, wrapWidth=None, ori=0, 
+    pos=(0, 0.1), height=0.04, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
-    depth=-2.0);
+    depth=-3.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
+
+# ------Prepare to start Routine "P2End"-------
+continueRoutine = True
+# update component parameters for each repeat
+EndAllKey.keys = []
+EndAllKey.rt = []
+_EndAllKey_allKeys = []
+# keep track of which components have finished
+P2EndComponents = [EndAllKey, FeedbackResp, FeedbackQ, EndMssg_Ver2]
+for thisComponent in P2EndComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+P2EndClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "P2End"-------
+while continueRoutine:
+    # get current time
+    t = P2EndClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=P2EndClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *EndAllKey* updates
+    waitOnFlip = False
+    if EndAllKey.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        EndAllKey.frameNStart = frameN  # exact frame index
+        EndAllKey.tStart = t  # local t and not account for scr refresh
+        EndAllKey.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(EndAllKey, 'tStartRefresh')  # time at next scr refresh
+        EndAllKey.status = STARTED
+        # keyboard checking is just starting
+        waitOnFlip = True
+        win.callOnFlip(EndAllKey.clock.reset)  # t=0 on next screen flip
+        win.callOnFlip(EndAllKey.clearEvents, eventType='keyboard')  # clear events on next screen flip
+    if EndAllKey.status == STARTED and not waitOnFlip:
+        theseKeys = EndAllKey.getKeys(keyList=['return'], waitRelease=False)
+        _EndAllKey_allKeys.extend(theseKeys)
+        if len(_EndAllKey_allKeys):
+            EndAllKey.keys = _EndAllKey_allKeys[-1].name  # just the last key pressed
+            EndAllKey.rt = _EndAllKey_allKeys[-1].rt
+            # a response ends the routine
+            continueRoutine = False
+    
+    # *FeedbackResp* updates
+    if FeedbackResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        FeedbackResp.frameNStart = frameN  # exact frame index
+        FeedbackResp.tStart = t  # local t and not account for scr refresh
+        FeedbackResp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(FeedbackResp, 'tStartRefresh')  # time at next scr refresh
+        FeedbackResp.setAutoDraw(True)
+    
+    # *FeedbackQ* updates
+    if FeedbackQ.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        FeedbackQ.frameNStart = frameN  # exact frame index
+        FeedbackQ.tStart = t  # local t and not account for scr refresh
+        FeedbackQ.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(FeedbackQ, 'tStartRefresh')  # time at next scr refresh
+        FeedbackQ.setAutoDraw(True)
+    
+    # *EndMssg_Ver2* updates
+    if EndMssg_Ver2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        EndMssg_Ver2.frameNStart = frameN  # exact frame index
+        EndMssg_Ver2.tStart = t  # local t and not account for scr refresh
+        EndMssg_Ver2.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(EndMssg_Ver2, 'tStartRefresh')  # time at next scr refresh
+        EndMssg_Ver2.setAutoDraw(True)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in P2EndComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "P2End"-------
+for thisComponent in P2EndComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# check responses
+if EndAllKey.keys in ['', [], None]:  # No response was made
+    EndAllKey.keys = None
+thisExp.addData('EndAllKey.keys',EndAllKey.keys)
+if EndAllKey.keys != None:  # we had a response
+    thisExp.addData('EndAllKey.rt', EndAllKey.rt)
+thisExp.addData('EndAllKey.started', EndAllKey.tStartRefresh)
+thisExp.addData('EndAllKey.stopped', EndAllKey.tStopRefresh)
+thisExp.nextEntry()
+thisExp.addData('FeedbackResp.text',FeedbackResp.text)
+FeedbackResp.reset()
+thisExp.addData('FeedbackResp.started', FeedbackResp.tStartRefresh)
+thisExp.addData('FeedbackResp.stopped', FeedbackResp.tStopRefresh)
+thisExp.addData('FeedbackQ.started', FeedbackQ.tStartRefresh)
+thisExp.addData('FeedbackQ.stopped', FeedbackQ.tStopRefresh)
+thisExp.addData('EndMssg_Ver2.started', EndMssg_Ver2.tStartRefresh)
+thisExp.addData('EndMssg_Ver2.stopped', EndMssg_Ver2.tStopRefresh)
+# the Routine "P2End" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # ------Prepare to start Routine "Welcome0"-------
 continueRoutine = True
@@ -1801,7 +1971,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-HeadphoneLoop = data.TrialHandler(nReps=0, method='random', 
+HeadphoneLoop = data.TrialHandler(nReps=1, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('Headphone_check.xlsx'),
     seed=None, name='HeadphoneLoop')
@@ -2054,7 +2224,7 @@ for thisHeadphoneLoop in HeadphoneLoop:
     HeadphoneLoop.addData('FeedbackMssg.stopped', FeedbackMssg.tStopRefresh)
     thisExp.nextEntry()
     
-# completed 0 repeats of 'HeadphoneLoop'
+# completed 1 repeats of 'HeadphoneLoop'
 
 # get names of stimulus parameters
 if HeadphoneLoop.trialList in ([], [None], None):
@@ -2911,7 +3081,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        MSTPlayLoop = data.TrialHandler(nReps=0, method='sequential', 
+        MSTPlayLoop = data.TrialHandler(nReps=1, method='sequential', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions('testSound.xlsx', selection=condition),
             seed=None, name='MSTPlayLoop')
@@ -3005,12 +3175,12 @@ for thisRandomization in Randomization:
             # update component parameters for each repeat
             MSTTestPlay.setSound(File, hamming=True)
             MSTTestPlay.setVolume(1, log=False)
-            MSTTestOptionKeys.keys = []
-            MSTTestOptionKeys.rt = []
-            _MSTTestOptionKeys_allKeys = []
+            MST_resp.keys = []
+            MST_resp.rt = []
+            _MST_resp_allKeys = []
             MSTTestTrialNum.setText(number)
             # keep track of which components have finished
-            MSTplayComponents = [MSTTestOptions, MSTTestPlay, MSTTestOptionKeys, MSTTestTrialNum, MSTTestNote]
+            MSTplayComponents = [MSTTestOptions, MSTTestPlay, MST_resp, MSTTestTrialNum, MSTTestNote]
             for thisComponent in MSTplayComponents:
                 thisComponent.tStart = None
                 thisComponent.tStop = None
@@ -3049,30 +3219,30 @@ for thisRandomization in Randomization:
                     MSTTestPlay.tStartRefresh = tThisFlipGlobal  # on global time
                     MSTTestPlay.play(when=win)  # sync with win flip
                 
-                # *MSTTestOptionKeys* updates
+                # *MST_resp* updates
                 waitOnFlip = False
-                if MSTTestOptionKeys.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
+                if MST_resp.status == NOT_STARTED and tThisFlip >= 1-frameTolerance:
                     # keep track of start time/frame for later
-                    MSTTestOptionKeys.frameNStart = frameN  # exact frame index
-                    MSTTestOptionKeys.tStart = t  # local t and not account for scr refresh
-                    MSTTestOptionKeys.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(MSTTestOptionKeys, 'tStartRefresh')  # time at next scr refresh
-                    MSTTestOptionKeys.status = STARTED
+                    MST_resp.frameNStart = frameN  # exact frame index
+                    MST_resp.tStart = t  # local t and not account for scr refresh
+                    MST_resp.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(MST_resp, 'tStartRefresh')  # time at next scr refresh
+                    MST_resp.status = STARTED
                     # keyboard checking is just starting
                     waitOnFlip = True
-                    win.callOnFlip(MSTTestOptionKeys.clock.reset)  # t=0 on next screen flip
-                    win.callOnFlip(MSTTestOptionKeys.clearEvents, eventType='keyboard')  # clear events on next screen flip
-                if MSTTestOptionKeys.status == STARTED and not waitOnFlip:
-                    theseKeys = MSTTestOptionKeys.getKeys(keyList=['1', '2'], waitRelease=False)
-                    _MSTTestOptionKeys_allKeys.extend(theseKeys)
-                    if len(_MSTTestOptionKeys_allKeys):
-                        MSTTestOptionKeys.keys = _MSTTestOptionKeys_allKeys[-1].name  # just the last key pressed
-                        MSTTestOptionKeys.rt = _MSTTestOptionKeys_allKeys[-1].rt
+                    win.callOnFlip(MST_resp.clock.reset)  # t=0 on next screen flip
+                    win.callOnFlip(MST_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+                if MST_resp.status == STARTED and not waitOnFlip:
+                    theseKeys = MST_resp.getKeys(keyList=['1', '2'], waitRelease=False)
+                    _MST_resp_allKeys.extend(theseKeys)
+                    if len(_MST_resp_allKeys):
+                        MST_resp.keys = _MST_resp_allKeys[-1].name  # just the last key pressed
+                        MST_resp.rt = _MST_resp_allKeys[-1].rt
                         # was this correct?
-                        if (MSTTestOptionKeys.keys == str(Correct)) or (MSTTestOptionKeys.keys == Correct):
-                            MSTTestOptionKeys.corr = 1
+                        if (MST_resp.keys == str(WordCorrect)) or (MST_resp.keys == WordCorrect):
+                            MST_resp.corr = 1
                         else:
-                            MSTTestOptionKeys.corr = 0
+                            MST_resp.corr = 0
                         # a response ends the routine
                         continueRoutine = False
                 
@@ -3129,20 +3299,20 @@ for thisRandomization in Randomization:
             MSTPlayLoop.addData('MSTTestPlay.started', MSTTestPlay.tStartRefresh)
             MSTPlayLoop.addData('MSTTestPlay.stopped', MSTTestPlay.tStopRefresh)
             # check responses
-            if MSTTestOptionKeys.keys in ['', [], None]:  # No response was made
-                MSTTestOptionKeys.keys = None
+            if MST_resp.keys in ['', [], None]:  # No response was made
+                MST_resp.keys = None
                 # was no response the correct answer?!
-                if str(Correct).lower() == 'none':
-                   MSTTestOptionKeys.corr = 1;  # correct non-response
+                if str(WordCorrect).lower() == 'none':
+                   MST_resp.corr = 1;  # correct non-response
                 else:
-                   MSTTestOptionKeys.corr = 0;  # failed to respond (incorrectly)
+                   MST_resp.corr = 0;  # failed to respond (incorrectly)
             # store data for MSTPlayLoop (TrialHandler)
-            MSTPlayLoop.addData('MSTTestOptionKeys.keys',MSTTestOptionKeys.keys)
-            MSTPlayLoop.addData('MSTTestOptionKeys.corr', MSTTestOptionKeys.corr)
-            if MSTTestOptionKeys.keys != None:  # we had a response
-                MSTPlayLoop.addData('MSTTestOptionKeys.rt', MSTTestOptionKeys.rt)
-            MSTPlayLoop.addData('MSTTestOptionKeys.started', MSTTestOptionKeys.tStartRefresh)
-            MSTPlayLoop.addData('MSTTestOptionKeys.stopped', MSTTestOptionKeys.tStopRefresh)
+            MSTPlayLoop.addData('MST_resp.keys',MST_resp.keys)
+            MSTPlayLoop.addData('MST_resp.corr', MST_resp.corr)
+            if MST_resp.keys != None:  # we had a response
+                MSTPlayLoop.addData('MST_resp.rt', MST_resp.rt)
+            MSTPlayLoop.addData('MST_resp.started', MST_resp.tStartRefresh)
+            MSTPlayLoop.addData('MST_resp.stopped', MST_resp.tStopRefresh)
             MSTPlayLoop.addData('MSTTestTrialNum.started', MSTTestTrialNum.tStartRefresh)
             MSTPlayLoop.addData('MSTTestTrialNum.stopped', MSTTestTrialNum.tStopRefresh)
             MSTPlayLoop.addData('MSTTestNote.started', MSTTestNote.tStartRefresh)
@@ -3151,7 +3321,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'MSTPlayLoop'
+        # completed 1 repeats of 'MSTPlayLoop'
         
         # get names of stimulus parameters
         if MSTPlayLoop.trialList in ([], [None], None):
@@ -3411,7 +3581,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        ExposureLoop = data.TrialHandler(nReps=0, method='sequential', 
+        ExposureLoop = data.TrialHandler(nReps=1, method='sequential', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_new_list.xlsx", selection='0:1080'),
             seed=None, name='ExposureLoop')
@@ -3971,7 +4141,7 @@ for thisRandomization in Randomization:
                 dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'ExposureLoop'
+        # completed 1 repeats of 'ExposureLoop'
         
         # get names of stimulus parameters
         if ExposureLoop.trialList in ([], [None], None):
@@ -4185,7 +4355,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        TrainTDLoop = data.TrialHandler(nReps=0, method='random', 
+        TrainTDLoop = data.TrialHandler(nReps=1, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions('TargetSyllables.xlsx', selection='216:218'),
             seed=None, name='TrainTDLoop')
@@ -4990,7 +5160,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'TrainTDLoop'
+        # completed 1 repeats of 'TrainTDLoop'
         
         # get names of stimulus parameters
         if TrainTDLoop.trialList in ([], [None], None):
@@ -5141,7 +5311,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        TD = data.TrialHandler(nReps=0, method='random', 
+        TD = data.TrialHandler(nReps=1, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=[None],
             seed=None, name='TD')
@@ -7610,7 +7780,7 @@ for thisRandomization in Randomization:
                 dataOut=['n','all_mean','all_std', 'all_raw'])
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'TD'
+        # completed 1 repeats of 'TD'
         
         # get names of stimulus parameters
         if TD.trialList in ([], [None], None):
@@ -7941,7 +8111,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        FamRatingLoop = data.TrialHandler(nReps=0, method='random', 
+        FamRatingLoop = data.TrialHandler(nReps=1, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_explicit.xlsx", selection='0:12'),
             seed=None, name='FamRatingLoop')
@@ -8206,7 +8376,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'FamRatingLoop'
+        # completed 1 repeats of 'FamRatingLoop'
         
         # get names of stimulus parameters
         if FamRatingLoop.trialList in ([], [None], None):
@@ -8445,7 +8615,7 @@ for thisRandomization in Randomization:
         routineTimer.reset()
         
         # set up handler to look after randomisation of conditions etc
-        AFCTest = data.TrialHandler(nReps=0, method='random', 
+        AFCTest = data.TrialHandler(nReps=1, method='random', 
             extraInfo=expInfo, originPath=-1,
             trialList=data.importConditions(cond + "_explicit.xlsx", selection='12:28'),
             seed=None, name='AFCTest')
@@ -8953,7 +9123,7 @@ for thisRandomization in Randomization:
             routineTimer.reset()
             thisExp.nextEntry()
             
-        # completed 0 repeats of 'AFCTest'
+        # completed 1 repeats of 'AFCTest'
         
         # get names of stimulus parameters
         if AFCTest.trialList in ([], [None], None):
@@ -9325,7 +9495,7 @@ EndAllKey.keys = []
 EndAllKey.rt = []
 _EndAllKey_allKeys = []
 # keep track of which components have finished
-P2EndComponents = [EndAllKey, FeedbackQ, EndMssg_Ver2]
+P2EndComponents = [EndAllKey, FeedbackResp, FeedbackQ, EndMssg_Ver2]
 for thisComponent in P2EndComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -9369,6 +9539,15 @@ while continueRoutine:
             EndAllKey.rt = _EndAllKey_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
+    
+    # *FeedbackResp* updates
+    if FeedbackResp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        FeedbackResp.frameNStart = frameN  # exact frame index
+        FeedbackResp.tStart = t  # local t and not account for scr refresh
+        FeedbackResp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(FeedbackResp, 'tStartRefresh')  # time at next scr refresh
+        FeedbackResp.setAutoDraw(True)
     
     # *FeedbackQ* updates
     if FeedbackQ.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -9418,6 +9597,10 @@ if EndAllKey.keys != None:  # we had a response
 thisExp.addData('EndAllKey.started', EndAllKey.tStartRefresh)
 thisExp.addData('EndAllKey.stopped', EndAllKey.tStopRefresh)
 thisExp.nextEntry()
+thisExp.addData('FeedbackResp.text',FeedbackResp.text)
+FeedbackResp.reset()
+thisExp.addData('FeedbackResp.started', FeedbackResp.tStartRefresh)
+thisExp.addData('FeedbackResp.stopped', FeedbackResp.tStopRefresh)
 thisExp.addData('FeedbackQ.started', FeedbackQ.tStartRefresh)
 thisExp.addData('FeedbackQ.stopped', FeedbackQ.tStopRefresh)
 thisExp.addData('EndMssg_Ver2.started', EndMssg_Ver2.tStartRefresh)

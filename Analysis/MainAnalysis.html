@@ -194,11 +194,16 @@ summary {
 </div>
 
 
-<div id="effect-size-calculation-gpower" class="section level3">
-<h3>Effect size calculation (GPower)</h3>
-<p>F tests - ANOVA: Fixed effects, omnibus, one-way</p>
-<p>Analysis: A priori: Compute required sample size</p>
-<pre><code>Input: Effect size f = 0.4200840
+<div id="hypothesis" class="section level3">
+<h3>Hypothesis</h3>
+<p>Pattern separation and statistical learning are two independent processes. Aging, which typically impaires the dentate gyrus and pattern separation, does not affect statistical learning which does not depend on the dentate gyrus.</p>
+<p><strong>Prediction</strong>: Older adults will be significantly worse at <em>lure discrimination</em> (but not recognition) on the auditory MST task compared to younger adults, but will perform just as well as the younger adults on the statistical learning task.</p>
+</div>
+<div id="sample-size-calculation-gpower" class="section level3">
+<h3>Sample size calculation (GPower)</h3>
+<pre><code>F tests - ANOVA: Fixed effects, omnibus, one-way
+Analysis: A priori: Compute required sample size
+Input: Effect size f = 0.4200840
 α err prob = 0.05
 Power (1-β err prob) = 0.80
 Number of groups = 2
@@ -209,6 +214,317 @@ Denominator df = 46
 Total sample size   =   48
 Actual power = 0.8130553</code></pre>
 <p><strong>24 subjects per age group</strong></p>
+</div>
+<div id="primary-analysis" class="section level3">
+<h3>Primary analysis</h3>
+<ol style="list-style-type: decimal">
+<li>Group difference in lure discrimination</li>
+</ol>
+<pre class="r"><code># Contrast code Age groups
+df$Age = as.factor(df$Age)
+df = mutate(df, coded_Age = Age)
+contrasts(df$coded_Age) = contr.treatment(2)
+
+# Run GLM
+discrimination_model = lm(Disc ~ coded_Age, data = df)
+summary(discrimination_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Disc ~ coded_Age, data = df)
+## 
+## Residuals:
+##        1        2        3        4        5 
+##  0.26636 -0.26636  0.03917 -0.17447  0.13529 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   0.9024     0.1790   5.042    0.015 *
+## coded_Age2    0.4973     0.2310   2.152    0.120  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2531 on 3 degrees of freedom
+##   (5 observations deleted due to missingness)
+## Multiple R-squared:  0.6069, Adjusted R-squared:  0.4759 
+## F-statistic: 4.632 on 1 and 3 DF,  p-value: 0.1205</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Group difference in Familiarity rating</li>
+</ol>
+<pre class="r"><code>df = mutate(df, fam_rating_diff = Word - Nonword)
+# Run GLM
+familiarity_model = lm(fam_rating_diff ~ coded_Age, data = df)
+summary(familiarity_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = fam_rating_diff ~ coded_Age, data = df)
+## 
+## Residuals:
+##          1          2          6          7          8          9         10 
+## -3.053e-16  2.493e-16 -4.500e-01 -2.000e-01 -4.500e-01  1.550e+00 -4.500e-01 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)   1.0000     0.5523   1.811    0.130
+## coded_Age2   -0.0500     0.6534  -0.077    0.942
+## 
+## Residual standard error: 0.781 on 5 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.00117,    Adjusted R-squared:  -0.1986 
+## F-statistic: 0.005855 on 1 and 5 DF,  p-value: 0.942</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Group difference in AFC accuracy</li>
+</ol>
+<pre class="r"><code># Run GLM
+AFC_model = lm(AFC ~ coded_Age, data = df)
+summary(AFC_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = AFC ~ coded_Age, data = df)
+## 
+## Residuals:
+##       1       2       6       7       8       9      10 
+## -0.0625  0.0625 -0.1000 -0.2875  0.0875  0.2750  0.0250 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)   0.7500     0.1358   5.523  0.00266 **
+## coded_Age2   -0.0875     0.1607  -0.545  0.60942   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.192 on 5 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.056,  Adjusted R-squared:  -0.1328 
+## F-statistic: 0.2966 on 1 and 5 DF,  p-value: 0.6094</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Group difference in RT effect</li>
+</ol>
+<pre class="r"><code>df = mutate(df, RTeffect = Pos1 - Pos3)
+RT_model = lm(RTeffect ~ coded_Age, data = df)
+summary(RT_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = RTeffect ~ coded_Age, data = df)
+## 
+## Residuals:
+##         1         2         6         7         8         9        10 
+##  0.084740 -0.084740 -0.077381 -0.038154  0.087673  0.032105 -0.004242 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept) 0.001378   0.055264   0.025    0.981
+## coded_Age2  0.077325   0.065389   1.183    0.290
+## 
+## Residual standard error: 0.07815 on 5 degrees of freedom
+##   (3 observations deleted due to missingness)
+## Multiple R-squared:  0.2186, Adjusted R-squared:  0.06227 
+## F-statistic: 1.398 on 1 and 5 DF,  p-value: 0.2902</code></pre>
+</div>
+<div id="secondary-analysis" class="section level3">
+<h3>Secondary analysis</h3>
+<ol style="list-style-type: decimal">
+<li>Group RT effect</li>
+</ol>
+<pre class="r"><code>rtdf = read.csv(&quot;./YA_rawRT.csv&quot;)
+rtdf[, 'Coded_Position'] = as.factor(rtdf[, 'Position'])
+class(rtdf$Coded_Position)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>contrasts(rtdf$Coded_Position) = contr.treatment(3)
+str(rtdf)</code></pre>
+<pre><code>## 'data.frame':    852 obs. of  7 variables:
+##  $ RT            : num  0.443 0.355 0.221 0.424 0.536 ...
+##  $ Syllable      : chr  &quot;ni&quot; &quot;ni&quot; &quot;ni&quot; &quot;ni&quot; ...
+##  $ Position      : num  2 2 2 2 1 1 1 1 3 3 ...
+##  $ Occurrence    : num  1 1 1 1 1 1 1 1 1 1 ...
+##  $ Subject       : chr  &quot;5ff649fda2b5841ceef90ff0&quot; &quot;5ff649fda2b5841ceef90ff0&quot; &quot;5ff649fda2b5841ceef90ff0&quot; &quot;5ff649fda2b5841ceef90ff0&quot; ...
+##  $ Condition     : int  3 3 3 3 3 3 3 3 3 3 ...
+##  $ Coded_Position: Factor w/ 3 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;: 2 2 2 2 1 1 1 1 3 3 ...
+##   ..- attr(*, &quot;contrasts&quot;)= num [1:3, 1:2] 0 1 0 0 0 1
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:3] &quot;1&quot; &quot;2&quot; &quot;3&quot;
+##   .. .. ..$ : chr [1:2] &quot;2&quot; &quot;3&quot;</code></pre>
+<pre class="r"><code>positionEffect = lm(RT ~ Coded_Position, data = rtdf)
+summary(positionEffect)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = rtdf)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.56318 -0.14753 -0.07303  0.10367  0.67812 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.56418    0.01331  42.390  &lt; 2e-16 ***
+## Coded_Position2 -0.02491    0.01901  -1.310  0.19043    
+## Coded_Position3 -0.05990    0.01894  -3.163  0.00162 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2266 on 849 degrees of freedom
+## Multiple R-squared:  0.01174,    Adjusted R-squared:  0.00941 
+## F-statistic: 5.042 on 2 and 849 DF,  p-value: 0.006656</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Individual RT effect</li>
+</ol>
+<pre class="r"><code># Load individual raw RT data file
+#rtdf = read.csv(&quot;./YA_rawRT.csv&quot;)
+subject_list = as.list(distinct(rtdf, Subject))
+for (i in subject_list){
+  for (x in i){
+    single_subj = rtdf %&gt;%
+      filter(Subject == x)
+    positionEffect = lm(RT ~ Coded_Position, data = single_subj)
+    print(x)
+    print(summary(positionEffect))
+  }
+  }</code></pre>
+<pre><code>## [1] &quot;5ff649fda2b5841ceef90ff0&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.37229 -0.08761 -0.02941  0.06476  0.35541 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.54781    0.02127  25.756  &lt; 2e-16 ***
+## Coded_Position2 -0.03717    0.03063  -1.214  0.22713    
+## Coded_Position3 -0.08612    0.03008  -2.863  0.00492 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1411 on 126 degrees of freedom
+## Multiple R-squared:  0.06142,    Adjusted R-squared:  0.04652 
+## F-statistic: 4.123 on 2 and 126 DF,  p-value: 0.01844
+## 
+## [1] &quot;60dc4b08dd9ec36f5ca9e3fa&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.34978 -0.11133 -0.04283  0.07359  0.70822 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.44918    0.02786  16.124   &lt;2e-16 ***
+## Coded_Position2  0.01730    0.04023   0.430   0.6681    
+## Coded_Position3  0.08336    0.03966   2.102   0.0379 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1717 on 107 degrees of freedom
+## Multiple R-squared:  0.04359,    Adjusted R-squared:  0.02572 
+## F-statistic: 2.439 on 2 and 107 DF,  p-value: 0.09213
+## 
+## [1] &quot;5b62e26f3a02cf000108d040&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.41278 -0.05477 -0.01662  0.04247  0.50554 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.413780   0.018108  22.851   &lt;2e-16 ***
+## Coded_Position2  0.025985   0.024777   1.049    0.296    
+## Coded_Position3 -0.001322   0.024657  -0.054    0.957    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1159 on 133 degrees of freedom
+## Multiple R-squared:  0.01213,    Adjusted R-squared:  -0.00272 
+## F-statistic: 0.8169 on 2 and 133 DF,  p-value: 0.444
+## 
+## [1] &quot;5c97c01445658c0016752431&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.20571 -0.10216 -0.05056  0.04782  0.59949 
+## 
+## Coefficients:
+##                  Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.515560   0.024871  20.729   &lt;2e-16 ***
+## Coded_Position2 -0.004381   0.036342  -0.121    0.904    
+## Coded_Position3 -0.040549   0.036087  -1.124    0.264    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1612 on 114 degrees of freedom
+## Multiple R-squared:  0.0128, Adjusted R-squared:  -0.004519 
+## F-statistic: 0.7391 on 2 and 114 DF,  p-value: 0.4798
+## 
+## [1] &quot;5fbc0e54b3efb70778c86227&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.31527 -0.08580  0.00178  0.08766  0.51783 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.46840    0.02329  20.107  &lt; 2e-16 ***
+## Coded_Position2 -0.08443    0.03275  -2.578   0.0111 *  
+## Coded_Position3 -0.16638    0.03275  -5.080 1.34e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.151 on 125 degrees of freedom
+## Multiple R-squared:  0.1711, Adjusted R-squared:  0.1579 
+## F-statistic:  12.9 on 2 and 125 DF,  p-value: 8.049e-06
+## 
+## [1] &quot;602fa684fc65e0cb663c1970&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.31121 -0.10841 -0.02621  0.09659  0.46059 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.56921    0.02466  23.082  &lt; 2e-16 ***
+## Coded_Position2  0.03120    0.03554   0.878  0.38198    
+## Coded_Position3 -0.11081    0.03750  -2.955  0.00383 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1598 on 110 degrees of freedom
+## Multiple R-squared:  0.1199, Adjusted R-squared:  0.1039 
+## F-statistic: 7.495 on 2 and 110 DF,  p-value: 0.0008884
+## 
+## [1] &quot;60de5412b084f48d5d180a13&quot;
+## 
+## Call:
+## lm(formula = RT ~ Coded_Position, data = single_subj)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.62235 -0.07776  0.02495  0.10273  0.27535 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      0.98151    0.02272  43.205   &lt;2e-16 ***
+## Coded_Position2 -0.07108    0.03298  -2.155   0.0332 *  
+## Coded_Position3 -0.07446    0.03213  -2.318   0.0222 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.1455 on 116 degrees of freedom
+## Multiple R-squared:  0.055,  Adjusted R-squared:  0.03871 
+## F-statistic: 3.376 on 2 and 116 DF,  p-value: 0.03758</code></pre>
 </div>
 
 

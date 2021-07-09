@@ -2,11 +2,13 @@ import csv
 import glob
 import os
 import pandas as pd
+from pandas.io.parsers import read_csv
 from sklearn import linear_model
 ### Import mst_accuracy function to analyze Word MST
 import sys
 sys.path.append('c:\\Users\\wangs\\OneDrive - The University of Western Ontario\\Desktop\\ProjectBL\\CombinedMST\\Analysis\\')
 from cMST_analysis import mst_accuracy
+from cMST_analysis import check_pass
 ### Import all functions needed to analyze RT, false alarm rate, familiarity, and AFC accuracy rate
 sys.path.append('c:\\Users\\wangs\\OneDrive - The University of Western Ontario\\Desktop\\ProjectBL\\SL alone_ver2\\Analysis\\')
 import modifiedSLanalysis as sl
@@ -25,6 +27,8 @@ class File:
     def mst_process(self):
         mstdf = pd.read_csv(f'{self.group}/Renamed/{self.subject}_1.csv')
         acc_rate, alldata = mst_accuracy(mstdf, self.subject)
+        headphone_resp = check_pass(mstdf)
+        alldata.append(headphone_resp)
         return alldata # Return a list of z-scores, d-primes, LDI, and subject ID
 
     def sl_process(self):
@@ -36,7 +40,7 @@ class File:
         afc_accuracy = sl.get_afc_accuracy(sldf)
         # Check attentions
         attention = sl.check_pass(sldf) 
-        allSLdata.extend([old, part, word, afc_accuracy])
+        allSLdata.extend([self.subject, old, part, word, afc_accuracy])
         allSLdata += attention
         return allSLdata # Return a list
 
@@ -71,7 +75,7 @@ def tidyFiles(group, session):
 def get_positionwise(df):
     grouped_df = df.groupby(['Subject','Position']).mean()
     wider_df = grouped_df.pivot_table(index=['Subject'], columns='Position', values='RT')
-    wider_df.to_csv('YA_RT_byposition.csv')
+    wider_df.to_csv('YA_RT_byposition.csv', mode = 'a')
     return wider_df
 
 ########################
@@ -81,21 +85,25 @@ def get_positionwise(df):
 ### Get all data for each individual subject and output to csv
 ### Can perform after only one session
 
-mstlist, sllist, alllist = tidyFiles("YA", 1)
-print(mstlist) # participant list for MST follow-up
-print(sllist) # participant list for SL follow-up
+# mstlist, sllist, alllist = tidyFiles("OA", 1)
+# print(mstlist) # participant list for MST follow-up
+# print(sllist) # participant list for SL follow-up
 
-for file in alllist:
-    if file.condition == '1':
-        data = file.mst_process()
-    elif file.condition == '2':
-        data = file.sl_process()
-        RTdata = file.sl_RT()
-        RTdata.to_csv(f'{file.group}_rawRT.csv', mode='a', header=False, index=False)
-        #get_positionwise(RTdata)
-    with open (f'{file.group}raw.csv', 'a', newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(data)
+# for file in alllist:
+#     if file.condition == '1':
+#         data = file.mst_process()
+#         pass
+#     elif file.condition == '2':
+#         data = file.sl_process()
+#         RTdata = file.sl_RT()
+#         RTdata.to_csv(f'{file.group}_rawRT.csv', mode='a', header=False, index=False)
+#         pass
+#     with open (f'{file.group}raw.csv', 'a', newline="") as file:
+#             writer = csv.writer(file)
+#             writer.writerow(data)
 
+### Uncomment below to get average RT per position per individual
+RTdata = pd.read_csv('OA_rawRT.csv')
+get_positionwise(RTdata)
 
 

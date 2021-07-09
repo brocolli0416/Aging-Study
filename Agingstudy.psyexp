@@ -1329,7 +1329,7 @@
         <Param name="name" updates="None" val="EndMssg_Ver2" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0.1)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -1337,7 +1337,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Thank you for completing the tasks! We appreciate your time and cooporation. &amp;#10;&amp;#10;You may now exit the study by pressing ENTER.&amp;#10;Once you exit the study, you will be redirected back to prolific where you will receive your completion code.&amp;#10;" valType="extendedStr"/>
+        <Param name="text" updates="constant" val="Thank you for completing the tasks! We appreciate your time and cooporation. &amp;#10;&amp;#10;You may now exit the study by pressing ENTER. You will then see a green dialog box that indicates that your data has been successfully saved. Once you click &quot;OK&quot;, you will be directed back to Prolific with your completion code.&amp;#10;PLEASE DO NOT CLOSE THIS WINDOW." valType="extendedStr"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -4759,6 +4759,7 @@
     </Routine>
   </Routines>
   <Flow>
+    <Routine name="P2End"/>
     <Routine name="Welcome0"/>
     <Routine name="SoundCheckIntro"/>
     <Routine name="SoundCheck"/>
