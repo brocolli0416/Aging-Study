@@ -3,7 +3,7 @@
   <Settings>
     <Param name="Audio latency priority" updates="None" val="use prefs" valType="str"/>
     <Param name="Audio lib" updates="None" val="use prefs" valType="str"/>
-    <Param name="Completed URL" updates="None" val="https://app.prolific.co/submissions/complete?cc=45D0CA35" valType="str"/>
+    <Param name="Completed URL" updates="None" val="$'https://uwo.eu.qualtrics.com/jfe/form/SV_0PM9n45JrGKmfeS/?participant='+expInfo['participant']" valType="str"/>
     <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
@@ -1718,8 +1718,8 @@
       <CodeComponent name="code_5">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="counter = 1&amp;#10;checkcount = str(counter) + &quot;/6&quot;" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="counter = 1;&amp;#10;checkcount = (counter.toString() + &quot;/6&quot;);&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="counter = 1&amp;#10;checkcount = str(counter) + &quot;/6&quot;&amp;#10;headphonecorrect = 0" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="counter = 1;&amp;#10;checkcount = (counter.toString() + &quot;/6&quot;);&amp;#10;headphonecorrect = 0;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="counter += 1;&amp;#10;checkcount = (counter.toString() + &quot;/6&quot;);&amp;#10;" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="counter += 1&amp;#10;checkcount = str(counter) + &quot;/6&quot;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
@@ -1727,8 +1727,8 @@
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="if ((CheckResp.corr === 1)) {&amp;#10;    message = &quot;CORRECT&quot;;&amp;#10;} else {&amp;#10;    message = &quot;INCORRECT&quot;;&amp;#10;}&amp;#10;" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="if CheckResp.corr == 1:&amp;#10;    message = &quot;CORRECT&quot;&amp;#10;else:&amp;#10;    message = &quot;INCORRECT&quot;" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="if ((CheckResp.corr === 1)) {&amp;#10;    message = &quot;CORRECT&quot;;&amp;#10;    headphonecorrect += 1;&amp;#10;} else {&amp;#10;    message = &quot;INCORRECT&quot;;&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="if CheckResp.corr == 1:&amp;#10;    message = &quot;CORRECT&quot;&amp;#10;    headphonecorrect += 1&amp;#10;else:&amp;#10;    message = &quot;INCORRECT&quot;" valType="extendedCode"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="code_5" valType="code"/>
       </CodeComponent>
@@ -4757,13 +4757,86 @@
         <Param name="name" updates="None" val="AddRespCount" valType="code"/>
       </CodeComponent>
     </Routine>
+    <Routine name="Rest_code">
+      <CodeComponent name="code_14">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="repeatagainOn = 1;&amp;#10;if ((headphonecorrect &gt; 4)) {&amp;#10;    Headphone_retest.finished = true;&amp;#10;    repeatagainOn = 0;&amp;#10;} else {&amp;#10;    repeatagainOn = 1;&amp;#10;    headphonecorrect = 0;&amp;#10;}&amp;#10;" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="repeatagainOn = 1&amp;#10;if headphonecorrect &gt; 4:&amp;#10;    Headphone_retest.finished = True&amp;#10;    repeatagainOn = 0&amp;#10;else:&amp;#10;    repeatagainOn = 1&amp;#10;    headphonecorrect = 0" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_14" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="RepeatAgain">
+      <TextComponent name="RepeatAgainMssg">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.04" valType="code"/>
+        <Param name="name" updates="None" val="RepeatAgainMssg" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="You made too many incorrect responses. Please make sure your headphones are working and try the headphone check one more time. &amp;#10;&amp;#10;&amp;#10;&amp;#10;Press SPACE" valType="extendedStr"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="RepeatAgainKey">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="RepeatAgainKey" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
   </Routines>
   <Flow>
-    <Routine name="P2End"/>
     <Routine name="Welcome0"/>
     <Routine name="SoundCheckIntro"/>
     <Routine name="SoundCheck"/>
     <Routine name="HeadphoneCheck"/>
+    <LoopInitiator loopType="TrialHandler" name="Headphone_retest">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="100" valType="code"/>
+      <Param name="name" updates="None" val="Headphone_retest" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
     <LoopInitiator loopType="TrialHandler" name="HeadphoneLoop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[OrderedDict([('File', 'Headphone/t1_1.wav'), ('Correct', 1)]), OrderedDict([('File', 'Headphone/t1_2.wav'), ('Correct', 1)]), OrderedDict([('File', 'Headphone/t2_1.wav'), ('Correct', 2)]), OrderedDict([('File', 'Headphone/t2_2.wav'), ('Correct', 2)]), OrderedDict([('File', 'Headphone/t3_1.wav'), ('Correct', 3)]), OrderedDict([('File', 'Headphone/t3_2.wav'), ('Correct', 3)])]" valType="str"/>
@@ -4778,6 +4851,21 @@
     <Routine name="HeadphonePlay"/>
     <Routine name="HeadphoneFeedback"/>
     <LoopTerminator name="HeadphoneLoop"/>
+    <Routine name="Rest_code"/>
+    <LoopInitiator loopType="TrialHandler" name="RepeatAgainLoop">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="repeatagainOn" valType="code"/>
+      <Param name="name" updates="None" val="RepeatAgainLoop" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="RepeatAgain"/>
+    <LoopTerminator name="RepeatAgainLoop"/>
+    <LoopTerminator name="Headphone_retest"/>
     <LoopInitiator loopType="TrialHandler" name="Randomization">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[OrderedDict([('WordOrder', 1), ('SLOrder', 0)]), OrderedDict([('WordOrder', 0), ('SLOrder', 1)])]" valType="str"/>

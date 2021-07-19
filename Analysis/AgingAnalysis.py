@@ -26,9 +26,11 @@ class File:
     
     def mst_process(self):
         mstdf = pd.read_csv(f'{self.group}/Renamed/{self.subject}_1.csv')
-        acc_rate, alldata = mst_accuracy(mstdf, self.subject)
+        alldata, alldata2 = mst_accuracy(mstdf, self.subject)
+        alldata.append(self.subject)
         headphone_resp = check_pass(mstdf)
         alldata.append(headphone_resp)
+        alldata.append(self.session)
         return alldata # Return a list of z-scores, d-primes, LDI, and subject ID
 
     def sl_process(self):
@@ -42,6 +44,7 @@ class File:
         attention = sl.check_pass(sldf) 
         allSLdata.extend([self.subject, old, part, word, afc_accuracy])
         allSLdata += attention
+        allSLdata.append(self.session)
         return allSLdata # Return a list
 
     def sl_RT(self):
@@ -56,26 +59,47 @@ def tidyFiles(group, session):
     mst_subjects = []
     sl_subjects = []
     all_files = []
+    mstlist = []
     for i in df_list:
         df = pd.read_csv(i)
         subject = df["participant"][0]
+        print(subject)
         condition = [i for i in df["Condition"] if pd.isnull(i) == False]
-        condition = condition[0]
+        condition = str(condition[0])
         newdf = os.path.join(path, f"{group}/Renamed/{subject}_{condition}.csv")
         os.rename(i, newdf)
         if condition[0] == '1':
             mst_subjects.append(subject)
+            #removed later
+            # file = File(subject, group, session, condition)
+            # mstlist.append(file)
+
         elif condition[0] == '2':
             sl_subjects.append(subject)
         file = File(subject, group, session, condition)
         all_files.append(file)
-    return mst_subjects, sl_subjects, all_files
+    return mstlist, sl_subjects, all_files
+
+def all_analysis(alllist):
+    for file in alllist:
+        if file.condition == '1':
+            data = file.mst_process()
+            pass
+        elif file.condition == '2':
+            data = file.sl_process()
+            RTdata = file.sl_RT()
+            RTdata.to_csv(f'{file.group}_rawRT.csv', mode='a', header=False, index=False)
+            pass
+        with open (f'{file.group}raw.csv', 'a', newline="") as file:
+                writer = csv.writer(file)
+                writer.writerow(data)
+    return
 
 ### SL Reaction Time preprocessing and return a cleaner dataframe, output dataframe to csv
 def get_positionwise(df):
     grouped_df = df.groupby(['Subject','Position']).mean()
     wider_df = grouped_df.pivot_table(index=['Subject'], columns='Position', values='RT')
-    wider_df.to_csv('YA_RT_byposition.csv', mode = 'a')
+    wider_df.to_csv('YA_RT_byposition.csv')
     return wider_df
 
 ########################
@@ -85,25 +109,14 @@ def get_positionwise(df):
 ### Get all data for each individual subject and output to csv
 ### Can perform after only one session
 
-# mstlist, sllist, alllist = tidyFiles("OA", 1)
+#mstlist, sllist, alllist = tidyFiles("YA", 2)
 # print(mstlist) # participant list for MST follow-up
 # print(sllist) # participant list for SL follow-up
+#all_analysis(alllist)
 
-# for file in alllist:
-#     if file.condition == '1':
-#         data = file.mst_process()
-#         pass
-#     elif file.condition == '2':
-#         data = file.sl_process()
-#         RTdata = file.sl_RT()
-#         RTdata.to_csv(f'{file.group}_rawRT.csv', mode='a', header=False, index=False)
-#         pass
-#     with open (f'{file.group}raw.csv', 'a', newline="") as file:
-#             writer = csv.writer(file)
-#             writer.writerow(data)
 
-### Uncomment below to get average RT per position per individual
-RTdata = pd.read_csv('OA_rawRT.csv')
+# ### Uncomment below to get average RT per position per individual
+RTdata = pd.read_csv('YA_rawRT.csv')
 get_positionwise(RTdata)
 
 

@@ -7,16 +7,64 @@ output:
 
 ```{r setup, include=FALSE}
 library(dplyr)
+library(tidyr)
 library(ggplot2)
-library(lme4)
-library(plyr)
-library(jtools)
-library(lmerTest)
+library(lme4) # For doing linear mixed modeling
+library(jtools) # For looking at lmer outputs
+library(lmerTest) # For looking at lmer outputs
 ## Load data files
 # Summary data for both tasks
-df = read.csv("./YAraw.csv") 
+df = read.csv("./Summary.csv", fileEncoding="UTF-8-BOM") 
 # Data for individual reaction times
-rtdf = read.csv("./OA_rawRT.csv")
+
+yadf = read.csv("./YA_rawRT.csv") %>%
+  filter(Subject != '5c97c01445658c0016752431'& 
+         Subject != '60de5412b084f48d5d180a13'& 
+         Subject != '60d754d900f33c946d172323'&
+         Subject != '60e228622e17c4ed597d92eb'& 
+         Subject != '60214feec65df50cd6837a48'& 
+         Subject != '5eb4841544c2df2f0190e8a0'& 
+         Subject != '60cf8e9061eea6080907595a'& 
+         Subject != '606192adc1fba49d7198df8f') 
+
+oadf = read.csv("./OA_rawRT.csv") %>%
+  filter(Subject != '5c5dadc66467ac0001b7fa53' & 
+           Subject != '5f564265f9d134032e757250'& 
+           Subject != '60a8bc1ed3a5087a7538ba3d'&
+           Subject != '5780d9a1900cc80001d2d1c2'&
+           Subject != '5a69d956111b250001e342b3'&
+           Subject != '5ea02e5c3fb6e6000a30693b'&
+           Subject != '5f607efeea3f070107273203'& 
+           Subject != '5b100cb0a3553300017541c8'&
+           Subject != '5ea00e67848a4300085fa5cd'&
+           Subject != '5f6f7258aa7332501adb94f4'&
+           Subject != '60c0c4333e49151d768bb35b')
+oadf = mutate(oadf, Age = 0 )
+yadf = mutate(yadf, Age = 1)
+rtdf = rbind(oadf, yadf)
+
+rtdf$RT = as.numeric(rtdf$RT*1000)
+```
+
+```{r Filter loaded dataset}
+# Change here to change filtering criteria
+df = df %>%
+  filter(Exclusion != 'exc') # remove the excluded participatns
+  #filter(Exclusion != 'out') # uncomment when removing outliers 
+
+# Contrast code Age groups
+df$Age = as.factor(df$Age)
+df = mutate(df, coded_Age = Age)
+contrasts(df$coded_Age) = contr.treatment(2)
+
+df$Gender = as.factor(df$Gender)
+df = mutate(df, coded_Gender = Gender)
+contrasts(df$coded_Gender) = contr.treatment(2)
+
+df$Counterbalance = as.factor(df$Counterbalance)
+df = mutate(df, coded_Counterbalance = Counterbalance)
+contrasts(df$coded_Counterbalance) = contr.treatment(2)
+
 ```
 
 ### Hypothesis
@@ -40,62 +88,78 @@ Pattern separation and statistical learning are two independent processes. Aging
 	Total sample size	=	48
 	Actual power = 0.8130553
 	
-**= 24 + 4 subjects per age group**
+**= 24 + 4 subjects per age group** to achieve 80% power to detect a large effect size (f = 0.42, from the literature)
 
 ### Primary analysis
+Variables of interest: 
+- Age group (1-4)
+- Lure discrimination (1)
+- Familiarity rating (2)
+- AFC accuracy (3)
+- Reaction time (4)
+
+Control variables (included in the full model):
+- Gender
+- Counterbalance condition
+- Randomization condition (both MST and SL)
+- Occurrence (for RT)
+
 1. Group difference in lure discrimination
 ```{r Lure discrimination difference - GLM}
-# Contrast code Age groups
-df$Age = as.factor(df$Age)
-df = mutate(df, coded_Age = Age)
-contrasts(df$coded_Age) = contr.treatment(2)
-
 # Run GLM
-discrimination_model = lm(Disc ~ coded_Age, data = df)
-summary(discrimination_model)
+discrimination_full = lm(Disc ~ coded_Age + coded_Gender + coded_Counterbalance, data = df)
+discrimination_reduced = lm(Disc ~ coded_Age, data = df)
+summary(discrimination_reduced)
+summary(discrimination_full)
+anova(discrimination_full, discrimination_reduced)
+
+disc_anova = aov(Disc ~ coded_Age, data = df)
+summary(disc_anova)
 ```
 
 2. Group difference in Familiarity rating
 ```{r Familiarity difference - GLM}
 df = mutate(df, fam_rating_diff = Word - Nonword)
-# Run GLM
-familiarity_model = lm(fam_rating_diff ~ coded_Age, data = df)
-summary(familiarity_model)
+longer_df = pivot_longer(df, cols=ends_with('ord'), names_to = 'word_type', values_to = 'ratings')
+longer_df$word_type = as.factor(longer_df$word_type)
+contrasts(longer_df$word_type) = contr.treatment(3, base=1)
+# Run linear mixed model with subject as random effects
+familiarity_full = lmer(ratings ~ word_type*coded_Age + coded_Gender + coded_Counterbalance + (1|Subject), 
+                        data = longer_df)
+familiarity_model = lmer(ratings ~ word_type + coded_Age + (1|Subject), data = longer_df)
+summary(familiarity_full)
 ```
 
 3. Group difference in AFC accuracy
 ```{r AFC difference - GLM}
 # Run GLM
-AFC_model = lm(AFC ~ coded_Age, data = df)
-summary(AFC_model)
+AFC_full = lm(AFC ~ coded_Age + coded_Gender + coded_Counterbalance, data = df)
+AFC_reduced = lm(AFC ~ coded_Age, data = df)
+summary(AFC_full)
+summary(AFC_reduced)
+anova(AFC_full, AFC_reduced)
 ```
 
 4. Group difference in RT effect
 ```{r RT effect difference - GLM}
 #rtdf = rtdf %>%
 #  filter(Subject != '60dc4b08dd9ec36f5ca9e3fa')
+
 rtdf[, 'Coded_Position'] = as.factor(rtdf[, 'Position'])
 rtdf[, 'Coded_Occurrence'] = as.factor(rtdf[, 'Occurrence'])
-#class(rtdf$Coded_Position)
+rtdf[, 'Coded_Condition'] = as.factor(rtdf[, 'Condition'])
+rtdf[, 'Age'] = as.factor(rtdf[, 'Age'])
 contrasts(rtdf$Coded_Position) = contr.treatment(3)
-contrasts(rtdf$Coded_Occurrence) = contr.sum(3)
-#str(rtdf)
+contrasts(rtdf$Coded_Occurrence) = contr.treatment(3)
+contrasts(rtdf$Coded_Condition) = contr.treatment(3)
+contrasts(rtdf$Age) = contr.treatment(2)
 
-rtdf = mutate(rtdf, pos2 = case_when(Position == 1 ~ -1,
-                                         Position == 2 ~ 1,
-                                         Position == 3 ~ 0),
-                    pos3 = case_when(Position == 1 ~ -1,
-                                     Position == 2 ~ 0,
-                                     Position == 3 ~ 1))
-
-positionEffect = lmer(RT ~ Coded_Position + (1 + Coded_Position| Subject), data = rtdf)
-positionEffect4 = lmer(RT ~  (1 + Coded_Position |Subject), data=rtdf)
-contrast_model = lmer(RT ~ Coded_Position + (1 + Coded_Position | Subject), data = rtdf)
-mutated_model = lmer(RT ~ (pos2+pos3) + (1 + pos2 + pos3 | Subject), data = rtdf)
-summary(mutated_model)
-summary(contrast_model)
+position_full = lmer(RT ~ Coded_Position*Coded_Occurrence + Coded_Condition + Age*Coded_Position + (1 + Coded_Position| Subject), data = rtdf)
+position_reduced = lmer(RT ~  Coded_Position + (1 + Coded_Position | Subject), data=rtdf)
+summary(position_full)
+summary(position_reduced)
 #summ(positionEffect)
-anova(mutated_model, contrast_model)
+anova(position_full, position_reduced)
 
 ```
 ### Secondary analysis
@@ -119,13 +183,178 @@ for (i in subject_list){
 }
 
 # Output p-value for the difference between 1st and 3rd positions for each individual
-write.table(pvalue_list, "./YA_rawRT.csv", append=TRUE, sep = ',')
+#write.table(pvalue_list, "./YA_rawRT.csv", append=TRUE, sep = ',')
+```
+
+2. Group difference in recognition
+```{r Recognition difference}
+# Run GLM
+recognition_full = lm(Recog ~ coded_Age + coded_Gender + coded_Counterbalance, data = df)
+recognition_reduced = lm(Recog ~ coded_Age, data = df)
+summary(recognition_full)
+summary(recognition_reduced)
+anova(recognition_reduced, recognition_full)
+
+recog_anova = aov(Recog ~ coded_Age, data = df)
+summary(recog_anova)
+```
+
+3. SL-MST correlation
+```{r SL-MST Correlation}
+library(Hmisc)
+
+correl_df = df %>%
+  mutate(RT.Diff = Diff) %>%
+  select(Recog, Disc, Fam.Diff, AFC, RT.Diff)
+
+correl_res = cor(correl_df)
+
+correl_res_p = rcorr(as.matrix(correl_df))
+correl_res_p
+
 ```
 
 
 #### Visualization
-- Syllable effect
-- Position effect
-- Order + position interaction
+1. Position effect
+```{r Visualize position-wise}
+rtdf$Position = as.factor(rtdf$Position)
+
+confidence_interval = function(x){ # Function that calculates the 95% confidence interval of distribution x
+  qnorm(.95) * (sd(x)/sqrt(length(x)))
+}
+
+# Summarize based on syllable positions
+sum_pos = rtdf %>%
+  dplyr::group_by(Position) %>%
+  dplyr::summarise(mean = mean(RT), CI = confidence_interval(RT))
+
+# Plot
+position_plot = ggplot(sum_pos, aes(x=Position, y=mean)) +
+  #geom_bar(stat = "identity", fill = 'black', alpha = 0.5, width = 0.5) + #For bar graph
+  geom_line(aes(group = 1)) +
+  geom_point() +
+  ylab('Mean RT (ms)') +
+  xlab('Syllable position') +
+  geom_errorbar(aes(ymin = mean-CI, ymax = mean+CI, width=0.05)) +
+  theme(axis.line = element_line(color = 'black')) +
+## Uncomment for a blank background
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+position_plot
+```
+
+2. Syllable effect
+```{r Visualize syllable-wise}
+rtdf$Syllable = as.factor(rtdf$Syllable)
+
+confidence_interval = function(x){ # Function that calculates the 95% confidence interval of distribution x
+  qnorm(.95) * (sd(x)/sqrt(length(x)))
+}
+
+# Summarize based on syllables
+sum_syl = rtdf %>%
+  dplyr::group_by(Syllable) %>%
+  dplyr::summarise(mean = mean(RT), CI = confidence_interval(RT))
+
+# Plot
+syllable_plot = ggplot(sum_syl, aes(x=Syllable, y=mean)) +
+  geom_bar(stat = "identity", fill = 'black', alpha = 0.5, width = 0.5) + #For bar graph
+  #geom_line(aes(group = 1)) +
+  geom_point() +
+  ylab('Mean RT (ms)') +
+  xlab('Syllable position') +
+  coord_cartesian(ylim=c(200, 630)) +
+  geom_errorbar(aes(ymin = mean-CI, ymax = mean+CI, width=0.05)) +
+  theme(axis.line = element_line(color = 'black'))
+## Uncomment for a blank background
+  #theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+syllable_plot
+
+summary(rtdf)
+```
+
+3. Occurrence x Position interaction
+```{r Visualize Occurrence x Position}
+rtdf$Occurrence = as.factor(rtdf$Occurrence)
+rtdf$Position = as.numeric(rtdf$Position)
+
+confidence_interval = function(x){ # Function that calculates the 95% confidence interval of distribution x
+  qnorm(.95) * (sd(x)/sqrt(length(x)))
+}
+
+# Summarize based on syllable positions and occurrences
+#positions = c(sum_OP$mean_1, sum_OP$mean_2, sum_OP$mean_3)
+
+sum_PO = rtdf %>%
+  dplyr::group_by(Position, Occurrence) %>%
+  dplyr::summarise(mean = mean(RT), CI = confidence_interval(RT)) %>%
+  pivot_wider(names_from = 'Occurrence', values_from = c('mean', 'CI'))
+
+# Plot
+ggplot(sum_PO, aes(x=Position)) +
+  #geom_bar(stat = "identity", fill = 'black', alpha = 0.5, width = 0.5) + #For bar graph
+  geom_line(aes(y=mean_1), color = 'blue') +
+  geom_line(aes(y=mean_2), color = 'green') +
+  geom_line(aes(y=mean_3), color = 'red') +
+  ylab('Mean RT (ms)') +
+  xlab('Syllable position') +
+  geom_errorbar(aes(ymin = mean_1-CI_1, ymax = mean_1+CI_1, width=0.05)) +
+  geom_errorbar(aes(ymin = mean_2-CI_2, ymax = mean_2+CI_2, width=0.05)) +
+  geom_errorbar(aes(ymin = mean_3-CI_3, ymax = mean_3+CI_3, width=0.05)) +
+  theme(axis.line = element_line(color = 'black')) +
+## Uncomment for a blank background
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+#OP_plot
+
+```
+
+4. d-prime distributions
+```{r Boxplot d-prime for Disc and Recog}
+plot_disc = ggplot(df, aes(x = Age, y = Disc), narm = TRUE) +
+  geom_boxplot(fill='light gray') +
+  geom_point() +
+  ylab("Discrimination") +
+  xlab("") +
+  theme(axis.line = element_line(color = 'black')) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+plot_recog = ggplot(df, aes(x = Age, y = Recog), narm = TRUE) +
+  geom_boxplot(fill='light gray') +
+  geom_point() +
+  ylab("Recognition") +
+  xlab("") +
+  theme(axis.line = element_line(color = 'black')) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+plot_disc
+plot_recog
+
+```
+
+```{r Visualize correlations}
+ggplot(df, aes(x=Disc, y=Fam.Diff)) +
+  geom_point() +
+  ylab("Familiarity rating (Word - Nonword)") +
+  xlab("Lure Discrimination") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+plot(df$Disc, df$Fam.Diff)
+lines(predict(lm(df$Disc~df$Fam.Diff)),col='black')
+
+ggplot(df, aes(x=Disc, y=AFC)) +
+  geom_point() +
+  ylab("AFC Accuracy") +
+  xlab("Lure Discrimination") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+ggplot(df, aes(x=Fam.Diff, y=AFC)) +
+  geom_point() +
+  xlab("Familiarity rating (Word - Nonword)") +
+  ylab("AFC Accuracy") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
+```
 
 

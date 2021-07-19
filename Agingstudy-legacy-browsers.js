@@ -45,10 +45,10 @@ flowScheduler.add(SoundCheckRoutineEnd());
 flowScheduler.add(HeadphoneCheckRoutineBegin());
 flowScheduler.add(HeadphoneCheckRoutineEachFrame());
 flowScheduler.add(HeadphoneCheckRoutineEnd());
-const HeadphoneLoopLoopScheduler = new Scheduler(psychoJS);
-flowScheduler.add(HeadphoneLoopLoopBegin, HeadphoneLoopLoopScheduler);
-flowScheduler.add(HeadphoneLoopLoopScheduler);
-flowScheduler.add(HeadphoneLoopLoopEnd);
+const Headphone_retestLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(Headphone_retestLoopBegin, Headphone_retestLoopScheduler);
+flowScheduler.add(Headphone_retestLoopScheduler);
+flowScheduler.add(Headphone_retestLoopEnd);
 const RandomizationLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(RandomizationLoopBegin, RandomizationLoopScheduler);
 flowScheduler.add(RandomizationLoopScheduler);
@@ -65,103 +65,103 @@ psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
-    {'name': 'Headphone/t2_1.wav', 'path': 'Headphone/t2_1.wav'},
-    {'name': '1_explicit.xlsx', 'path': '1_explicit.xlsx'},
-    {'name': '2_new_list.xlsx', 'path': '2_new_list.xlsx'},
-    {'name': 'TestWords/SA_GI_TAI.wav', 'path': 'TestWords/SA_GI_TAI.wav'},
-    {'name': 'TestWords/DAI_RU_CHI.wav', 'path': 'TestWords/DAI_RU_CHI.wav'},
-    {'name': 'TestWords/LI_BA_KAY.wav', 'path': 'TestWords/LI_BA_KAY.wav'},
     {'name': 'SL_Sounds/su.wav', 'path': 'SL_Sounds/su.wav'},
-    {'name': 'SL_Sounds/My Syllables/WI.wav', 'path': 'SL_Sounds/My Syllables/WI.wav'},
-    {'name': 'TestWords/SI_VAI_CHU.wav', 'path': 'TestWords/SI_VAI_CHU.wav'},
-    {'name': 'SL_Sounds/ta.wav', 'path': 'SL_Sounds/ta.wav'},
-    {'name': 'SL_Sounds/ni.wav', 'path': 'SL_Sounds/ni.wav'},
-    {'name': 'TestWords/PAI_LU_WA.wav', 'path': 'TestWords/PAI_LU_WA.wav'},
-    {'name': 'TestWords/NU_CHAY_SO.wav', 'path': 'TestWords/NU_CHAY_SO.wav'},
-    {'name': 'TestWords/VAI_HO_LA.wav', 'path': 'TestWords/VAI_HO_LA.wav'},
-    {'name': 'trainSound.xlsx', 'path': 'trainSound.xlsx'},
-    {'name': 'Headphone/t1_2.wav', 'path': 'Headphone/t1_2.wav'},
-    {'name': 'SL_Sounds/My Syllables/PI.wav', 'path': 'SL_Sounds/My Syllables/PI.wav'},
-    {'name': 'SL_Sounds/ru.wav', 'path': 'SL_Sounds/ru.wav'},
-    {'name': 'SL_Sounds/My Syllables/DA.wav', 'path': 'SL_Sounds/My Syllables/DA.wav'},
-    {'name': 'TestWords/BA_LI_KAY.wav', 'path': 'TestWords/BA_LI_KAY.wav'},
-    {'name': 'TDTrainList.xlsx', 'path': 'TDTrainList.xlsx'},
-    {'name': 'SL_Sounds/ge.wav', 'path': 'SL_Sounds/ge.wav'},
-    {'name': 'TestWords/KAY_BA_LI.wav', 'path': 'TestWords/KAY_BA_LI.wav'},
-    {'name': '2_explicit.xlsx', 'path': '2_explicit.xlsx'},
+    {'name': 'TestWords/WAI_VU_NA.wav', 'path': 'TestWords/WAI_VU_NA.wav'},
+    {'name': '3_new_list.xlsx', 'path': '3_new_list.xlsx'},
+    {'name': 'TestWords/LI_BA_KAY.wav', 'path': 'TestWords/LI_BA_KAY.wav'},
     {'name': 'TestWords/GI_SA_TAI.wav', 'path': 'TestWords/GI_SA_TAI.wav'},
     {'name': 'TestWords/LA_ZAY_CHAI.wav', 'path': 'TestWords/LA_ZAY_CHAI.wav'},
-    {'name': 'TestWords/FI_GU_CHA.wav', 'path': 'TestWords/FI_GU_CHA.wav'},
-    {'name': 'TestWords/LU_HAI_BO.wav', 'path': 'TestWords/LU_HAI_BO.wav'},
-    {'name': 'Training/JAY_YO_BU.wav', 'path': 'Training/JAY_YO_BU.wav'},
-    {'name': 'SL_Sounds/My Syllables/DO.wav', 'path': 'SL_Sounds/My Syllables/DO.wav'},
-    {'name': 'TestWords/KAI_LAY_TA.wav', 'path': 'TestWords/KAI_LAY_TA.wav'},
-    {'name': 'TestWords/NA_VU_WAI.wav', 'path': 'TestWords/NA_VU_WAI.wav'},
-    {'name': 'Headphone/t2_2.wav', 'path': 'Headphone/t2_2.wav'},
-    {'name': 'TestWords/GI_TAI_SA.wav', 'path': 'TestWords/GI_TAI_SA.wav'},
-    {'name': 'TestWords/TAI_GI_SA.wav', 'path': 'TestWords/TAI_GI_SA.wav'},
-    {'name': 'TestWords/FU_ZO_RAI.wav', 'path': 'TestWords/FU_ZO_RAI.wav'},
-    {'name': 'Training/FO_YI_LAY.wav', 'path': 'Training/FO_YI_LAY.wav'},
-    {'name': 'TestWords/PU_DAY_MO.wav', 'path': 'TestWords/PU_DAY_MO.wav'},
-    {'name': 'TestWords/KO_SU_FAI.wav', 'path': 'TestWords/KO_SU_FAI.wav'},
-    {'name': '3_TD_list.xlsx', 'path': '3_TD_list.xlsx'},
-    {'name': 'TestWords/VU_WAI_NA.wav', 'path': 'TestWords/VU_WAI_NA.wav'},
-    {'name': 'TestWords/GU_CHAI_PI.wav', 'path': 'TestWords/GU_CHAI_PI.wav'},
-    {'name': 'TestWords/HA_SI_JAI.wav', 'path': 'TestWords/HA_SI_JAI.wav'},
-    {'name': 'TestWords/NA_WAI_VU.wav', 'path': 'TestWords/NA_WAI_VU.wav'},
-    {'name': 'SL_Sounds/me.wav', 'path': 'SL_Sounds/me.wav'},
-    {'name': 'TestWords/HO_NAY_VA.wav', 'path': 'TestWords/HO_NAY_VA.wav'},
-    {'name': 'TestWords/HI_NAY_VA.wav', 'path': 'TestWords/HI_NAY_VA.wav'},
-    {'name': 'SL_Sounds/fu.wav', 'path': 'SL_Sounds/fu.wav'},
-    {'name': 'TestWords/CHU_LA_PAY.wav', 'path': 'TestWords/CHU_LA_PAY.wav'},
-    {'name': '1_TD_list.xlsx', 'path': '1_TD_list.xlsx'},
-    {'name': 'SL_Sounds/re.wav', 'path': 'SL_Sounds/re.wav'},
-    {'name': 'TestWords/SA_TAI_GI.wav', 'path': 'TestWords/SA_TAI_GI.wav'},
-    {'name': 'Headphone_check.xlsx', 'path': 'Headphone_check.xlsx'},
-    {'name': 'SL_Sounds/pu.wav', 'path': 'SL_Sounds/pu.wav'},
-    {'name': 'TestWords/TAI_SA_GI.wav', 'path': 'TestWords/TAI_SA_GI.wav'},
-    {'name': 'TestWords/MO_PU_DAY.wav', 'path': 'TestWords/MO_PU_DAY.wav'},
-    {'name': 'testSound.xlsx', 'path': 'testSound.xlsx'},
-    {'name': 'Headphone/t1_1.wav', 'path': 'Headphone/t1_1.wav'},
-    {'name': 'Headphone/t3_2.wav', 'path': 'Headphone/t3_2.wav'},
-    {'name': 'TestWords/DAY_PU_MO.wav', 'path': 'TestWords/DAY_PU_MO.wav'},
-    {'name': 'SL_Sounds/ti.wav', 'path': 'SL_Sounds/ti.wav'},
-    {'name': 'TestWords/MO_DAY_PU.wav', 'path': 'TestWords/MO_DAY_PU.wav'},
-    {'name': 'TestWords/VU_NA_WAI.wav', 'path': 'TestWords/VU_NA_WAI.wav'},
-    {'name': 'SL_Sounds/My Syllables/TI.wav', 'path': 'SL_Sounds/My Syllables/TI.wav'},
-    {'name': 'TestWords/RAY_PA_TI.wav', 'path': 'TestWords/RAY_PA_TI.wav'},
-    {'name': 'TestWords/WAI_NA_VU.wav', 'path': 'TestWords/WAI_NA_VU.wav'},
-    {'name': '1_new_list.xlsx', 'path': '1_new_list.xlsx'},
-    {'name': 'TestWords/PU_MO_DAY.wav', 'path': 'TestWords/PU_MO_DAY.wav'},
-    {'name': 'SL_Sounds/My Syllables/LO.wav', 'path': 'SL_Sounds/My Syllables/LO.wav'},
-    {'name': 'TargetSyllables.xlsx', 'path': 'TargetSyllables.xlsx'},
     {'name': 'SL_Sounds/My Syllables/TU.wav', 'path': 'SL_Sounds/My Syllables/TU.wav'},
-    {'name': 'TestWords/NO_WA_BAY.wav', 'path': 'TestWords/NO_WA_BAY.wav'},
+    {'name': 'SL_Sounds/me.wav', 'path': 'SL_Sounds/me.wav'},
+    {'name': '1_new_list.xlsx', 'path': '1_new_list.xlsx'},
+    {'name': 'TestWords/FI_GU_CHA.wav', 'path': 'TestWords/FI_GU_CHA.wav'},
+    {'name': 'SL_Sounds/My Syllables/DA.wav', 'path': 'SL_Sounds/My Syllables/DA.wav'},
+    {'name': 'TestWords/NU_CHAY_SO.wav', 'path': 'TestWords/NU_CHAY_SO.wav'},
+    {'name': 'TestWords/PAI_LU_WA.wav', 'path': 'TestWords/PAI_LU_WA.wav'},
+    {'name': 'SL_Sounds/My Syllables/LO.wav', 'path': 'SL_Sounds/My Syllables/LO.wav'},
+    {'name': 'TestWords/VAI_HO_LA.wav', 'path': 'TestWords/VAI_HO_LA.wav'},
+    {'name': 'TestWords/BA_LI_KAY.wav', 'path': 'TestWords/BA_LI_KAY.wav'},
+    {'name': 'TestWords/MO_PU_DAY.wav', 'path': 'TestWords/MO_PU_DAY.wav'},
+    {'name': '1_explicit.xlsx', 'path': '1_explicit.xlsx'},
+    {'name': '3_TD_list.xlsx', 'path': '3_TD_list.xlsx'},
+    {'name': 'TestWords/NA_VU_WAI.wav', 'path': 'TestWords/NA_VU_WAI.wav'},
+    {'name': 'TestWords/GU_CHAI_PI.wav', 'path': 'TestWords/GU_CHAI_PI.wav'},
+    {'name': 'trainSound.xlsx', 'path': 'trainSound.xlsx'},
+    {'name': 'Headphone/t2_1.wav', 'path': 'Headphone/t2_1.wav'},
+    {'name': 'SL_Sounds/fu.wav', 'path': 'SL_Sounds/fu.wav'},
     {'name': 'TestWords/WAI_RO_JU.wav', 'path': 'TestWords/WAI_RO_JU.wav'},
-    {'name': 'SL_Sounds/My Syllables/KU.wav', 'path': 'SL_Sounds/My Syllables/KU.wav'},
-    {'name': '3_new_list.xlsx', 'path': '3_new_list.xlsx'},
-    {'name': 'TestWords/RAI_FU_ZO.wav', 'path': 'TestWords/RAI_FU_ZO.wav'},
-    {'name': 'TestWords/FU_RAI_ZO.wav', 'path': 'TestWords/FU_RAI_ZO.wav'},
-    {'name': 'TestWords/GA_MU_ZI.wav', 'path': 'TestWords/GA_MU_ZI.wav'},
-    {'name': '3_explicit.xlsx', 'path': '3_explicit.xlsx'},
     {'name': 'TestWords/BA_KAY_LI.wav', 'path': 'TestWords/BA_KAY_LI.wav'},
-    {'name': 'SL_Sounds/ko.wav', 'path': 'SL_Sounds/ko.wav'},
-    {'name': 'TestWords/DA_CHU_VAI.wav', 'path': 'TestWords/DA_CHU_VAI.wav'},
+    {'name': 'TestWords/NO_WA_BAY.wav', 'path': 'TestWords/NO_WA_BAY.wav'},
+    {'name': 'TestWords/HA_SI_JAI.wav', 'path': 'TestWords/HA_SI_JAI.wav'},
+    {'name': 'TestWords/VU_NA_WAI.wav', 'path': 'TestWords/VU_NA_WAI.wav'},
     {'name': 'SL_Sounds/My Syllables/PA.wav', 'path': 'SL_Sounds/My Syllables/PA.wav'},
-    {'name': 'volumeadjust.wav', 'path': 'volumeadjust.wav'},
-    {'name': 'TestWords/LI_KAY_BA.wav', 'path': 'TestWords/LI_KAY_BA.wav'},
-    {'name': 'Counterbalance.xlsx', 'path': 'Counterbalance.xlsx'},
-    {'name': 'TestWords/DAY_MO_PU.wav', 'path': 'TestWords/DAY_MO_PU.wav'},
-    {'name': 'TestWords/ZO_RAI_FU.wav', 'path': 'TestWords/ZO_RAI_FU.wav'},
-    {'name': 'TestWords/WAI_VU_NA.wav', 'path': 'TestWords/WAI_VU_NA.wav'},
+    {'name': 'Headphone/t1_1.wav', 'path': 'Headphone/t1_1.wav'},
+    {'name': 'TestWords/FU_ZO_RAI.wav', 'path': 'TestWords/FU_ZO_RAI.wav'},
+    {'name': 'TestWords/KAI_LAY_TA.wav', 'path': 'TestWords/KAI_LAY_TA.wav'},
+    {'name': 'TestWords/SA_GI_TAI.wav', 'path': 'TestWords/SA_GI_TAI.wav'},
+    {'name': '3_explicit.xlsx', 'path': '3_explicit.xlsx'},
+    {'name': 'TestWords/KAY_BA_LI.wav', 'path': 'TestWords/KAY_BA_LI.wav'},
+    {'name': 'TestWords/MO_DAY_PU.wav', 'path': 'TestWords/MO_DAY_PU.wav'},
+    {'name': 'TestWords/SI_VAI_CHU.wav', 'path': 'TestWords/SI_VAI_CHU.wav'},
+    {'name': 'TestWords/SA_TAI_GI.wav', 'path': 'TestWords/SA_TAI_GI.wav'},
+    {'name': 'SL_Sounds/My Syllables/PI.wav', 'path': 'SL_Sounds/My Syllables/PI.wav'},
+    {'name': 'TestWords/VU_WAI_NA.wav', 'path': 'TestWords/VU_WAI_NA.wav'},
+    {'name': 'SL_Sounds/ko.wav', 'path': 'SL_Sounds/ko.wav'},
+    {'name': 'TestWords/RAI_FU_ZO.wav', 'path': 'TestWords/RAI_FU_ZO.wav'},
+    {'name': 'SL_Sounds/ru.wav', 'path': 'SL_Sounds/ru.wav'},
+    {'name': 'Headphone/t1_2.wav', 'path': 'Headphone/t1_2.wav'},
+    {'name': 'TestWords/TAI_GI_SA.wav', 'path': 'TestWords/TAI_GI_SA.wav'},
+    {'name': 'SL_Sounds/My Syllables/KU.wav', 'path': 'SL_Sounds/My Syllables/KU.wav'},
+    {'name': 'testSound.xlsx', 'path': 'testSound.xlsx'},
+    {'name': 'TestWords/DA_CHU_VAI.wav', 'path': 'TestWords/DA_CHU_VAI.wav'},
     {'name': '2_TD_list.xlsx', 'path': '2_TD_list.xlsx'},
+    {'name': 'TestWords/RAY_PA_TI.wav', 'path': 'TestWords/RAY_PA_TI.wav'},
+    {'name': 'TargetSyllables.xlsx', 'path': 'TargetSyllables.xlsx'},
+    {'name': 'TestWords/TAI_SA_GI.wav', 'path': 'TestWords/TAI_SA_GI.wav'},
+    {'name': 'TestWords/ZO_RAI_FU.wav', 'path': 'TestWords/ZO_RAI_FU.wav'},
+    {'name': '2_new_list.xlsx', 'path': '2_new_list.xlsx'},
+    {'name': 'TestWords/KO_SU_FAI.wav', 'path': 'TestWords/KO_SU_FAI.wav'},
+    {'name': 'Headphone/t2_2.wav', 'path': 'Headphone/t2_2.wav'},
+    {'name': 'Training/FO_YI_LAY.wav', 'path': 'Training/FO_YI_LAY.wav'},
     {'name': 'HearingCheckSounds.xlsx', 'path': 'HearingCheckSounds.xlsx'},
-    {'name': 'TestWords/KAY_LI_BA.wav', 'path': 'TestWords/KAY_LI_BA.wav'},
-    {'name': 'SL_Sounds/fe.wav', 'path': 'SL_Sounds/fe.wav'},
+    {'name': 'SL_Sounds/My Syllables/DO.wav', 'path': 'SL_Sounds/My Syllables/DO.wav'},
+    {'name': 'TDTrainList.xlsx', 'path': 'TDTrainList.xlsx'},
+    {'name': 'SL_Sounds/re.wav', 'path': 'SL_Sounds/re.wav'},
+    {'name': 'TestWords/DAI_RU_CHI.wav', 'path': 'TestWords/DAI_RU_CHI.wav'},
+    {'name': 'TestWords/WAI_NA_VU.wav', 'path': 'TestWords/WAI_NA_VU.wav'},
     {'name': 'Headphone/t3_1.wav', 'path': 'Headphone/t3_1.wav'},
-    {'name': 'TestWords/RAI_ZO_FU.wav', 'path': 'TestWords/RAI_ZO_FU.wav'},
+    {'name': 'SL_Sounds/ta.wav', 'path': 'SL_Sounds/ta.wav'},
+    {'name': 'Training/JAY_YO_BU.wav', 'path': 'Training/JAY_YO_BU.wav'},
+    {'name': 'SL_Sounds/pu.wav', 'path': 'SL_Sounds/pu.wav'},
+    {'name': 'Headphone_check.xlsx', 'path': 'Headphone_check.xlsx'},
     {'name': 'TestWords/ZO_FU_RAI.wav', 'path': 'TestWords/ZO_FU_RAI.wav'},
-    {'name': 'Training/YO_BU_JAY.wav', 'path': 'Training/YO_BU_JAY.wav'}
+    {'name': 'SL_Sounds/ni.wav', 'path': 'SL_Sounds/ni.wav'},
+    {'name': 'Headphone/t3_2.wav', 'path': 'Headphone/t3_2.wav'},
+    {'name': 'SL_Sounds/My Syllables/WI.wav', 'path': 'SL_Sounds/My Syllables/WI.wav'},
+    {'name': 'Training/YO_BU_JAY.wav', 'path': 'Training/YO_BU_JAY.wav'},
+    {'name': 'SL_Sounds/fe.wav', 'path': 'SL_Sounds/fe.wav'},
+    {'name': 'TestWords/NA_WAI_VU.wav', 'path': 'TestWords/NA_WAI_VU.wav'},
+    {'name': '2_explicit.xlsx', 'path': '2_explicit.xlsx'},
+    {'name': 'TestWords/LU_HAI_BO.wav', 'path': 'TestWords/LU_HAI_BO.wav'},
+    {'name': 'TestWords/PU_MO_DAY.wav', 'path': 'TestWords/PU_MO_DAY.wav'},
+    {'name': 'TestWords/DAY_PU_MO.wav', 'path': 'TestWords/DAY_PU_MO.wav'},
+    {'name': 'SL_Sounds/My Syllables/TI.wav', 'path': 'SL_Sounds/My Syllables/TI.wav'},
+    {'name': 'TestWords/GA_MU_ZI.wav', 'path': 'TestWords/GA_MU_ZI.wav'},
+    {'name': 'TestWords/GI_TAI_SA.wav', 'path': 'TestWords/GI_TAI_SA.wav'},
+    {'name': 'SL_Sounds/ge.wav', 'path': 'SL_Sounds/ge.wav'},
+    {'name': 'Counterbalance.xlsx', 'path': 'Counterbalance.xlsx'},
+    {'name': 'volumeadjust.wav', 'path': 'volumeadjust.wav'},
+    {'name': 'TestWords/HI_NAY_VA.wav', 'path': 'TestWords/HI_NAY_VA.wav'},
+    {'name': 'TestWords/CHU_LA_PAY.wav', 'path': 'TestWords/CHU_LA_PAY.wav'},
+    {'name': 'TestWords/HO_NAY_VA.wav', 'path': 'TestWords/HO_NAY_VA.wav'},
+    {'name': 'TestWords/LI_KAY_BA.wav', 'path': 'TestWords/LI_KAY_BA.wav'},
+    {'name': 'TestWords/RAI_ZO_FU.wav', 'path': 'TestWords/RAI_ZO_FU.wav'},
+    {'name': 'TestWords/DAY_MO_PU.wav', 'path': 'TestWords/DAY_MO_PU.wav'},
+    {'name': '1_TD_list.xlsx', 'path': '1_TD_list.xlsx'},
+    {'name': 'TestWords/PU_DAY_MO.wav', 'path': 'TestWords/PU_DAY_MO.wav'},
+    {'name': 'TestWords/FU_RAI_ZO.wav', 'path': 'TestWords/FU_RAI_ZO.wav'},
+    {'name': 'TestWords/KAY_LI_BA.wav', 'path': 'TestWords/KAY_LI_BA.wav'},
+    {'name': 'SL_Sounds/ti.wav', 'path': 'SL_Sounds/ti.wav'}
   ]
 });
 
@@ -184,7 +184,7 @@ function updateInfo() {
 
   // add info from the URL:
   util.addInfoFromUrl(expInfo);
-  psychoJS.setRedirectUrls('https://app.prolific.co/submissions/complete?cc=45D0CA35', '');
+  psychoJS.setRedirectUrls(('https://uwo.eu.qualtrics.com/jfe/form/SV_0PM9n45JrGKmfeS/?participant=' + expInfo['participant']), '');
 
   return Scheduler.Event.NEXT;
 }
@@ -211,9 +211,14 @@ var CheckResp;
 var TrialNumber;
 var counter;
 var checkcount;
+var headphonecorrect;
 var Cross2;
 var HeadphoneFeedbackClock;
 var FeedbackMssg;
+var Rest_codeClock;
+var RepeatAgainClock;
+var RepeatAgainMssg;
+var RepeatAgainKey;
 var MSTWelcomeClock;
 var MSTWelcomeTxt;
 var WelcomeP2Continue;
@@ -545,6 +550,7 @@ function experimentInit() {
   
   counter = 1;
   checkcount = (counter.toString() + "/6");
+  headphonecorrect = 0;
   
   Cross2 = new visual.TextStim({
     win: psychoJS.window,
@@ -569,6 +575,23 @@ function experimentInit() {
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
   });
+  
+  // Initialize components for Routine "Rest_code"
+  Rest_codeClock = new util.Clock();
+  // Initialize components for Routine "RepeatAgain"
+  RepeatAgainClock = new util.Clock();
+  RepeatAgainMssg = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'RepeatAgainMssg',
+    text: 'You made too many incorrect responses. Please make sure your headphones are working and try the headphone check one more time. \n\n\n\nPress SPACE',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0,
+    color: new util.Color('white'),  opacity: 1,
+    depth: 0.0 
+  });
+  
+  RepeatAgainKey = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "MSTWelcome"
   MSTWelcomeClock = new util.Clock();
@@ -2831,8 +2854,44 @@ function HeadphoneCheckRoutineEnd(snapshot) {
 }
 
 
-var HeadphoneLoop;
+var Headphone_retest;
 var currentLoop;
+function Headphone_retestLoopBegin(Headphone_retestLoopScheduler) {
+  // set up handler to look after randomisation of conditions etc
+  Headphone_retest = new TrialHandler({
+    psychoJS: psychoJS,
+    nReps: 100, method: TrialHandler.Method.RANDOM,
+    extraInfo: expInfo, originPath: undefined,
+    trialList: undefined,
+    seed: undefined, name: 'Headphone_retest'
+  });
+  psychoJS.experiment.addLoop(Headphone_retest); // add the loop to the experiment
+  currentLoop = Headphone_retest;  // we're now the current loop
+
+  // Schedule all the trials in the trialList:
+  Headphone_retest.forEach(function() {
+    const snapshot = Headphone_retest.getSnapshot();
+
+    Headphone_retestLoopScheduler.add(importConditions(snapshot));
+    const HeadphoneLoopLoopScheduler = new Scheduler(psychoJS);
+    Headphone_retestLoopScheduler.add(HeadphoneLoopLoopBegin, HeadphoneLoopLoopScheduler);
+    Headphone_retestLoopScheduler.add(HeadphoneLoopLoopScheduler);
+    Headphone_retestLoopScheduler.add(HeadphoneLoopLoopEnd);
+    Headphone_retestLoopScheduler.add(Rest_codeRoutineBegin(snapshot));
+    Headphone_retestLoopScheduler.add(Rest_codeRoutineEachFrame(snapshot));
+    Headphone_retestLoopScheduler.add(Rest_codeRoutineEnd(snapshot));
+    const RepeatAgainLoopLoopScheduler = new Scheduler(psychoJS);
+    Headphone_retestLoopScheduler.add(RepeatAgainLoopLoopBegin, RepeatAgainLoopLoopScheduler);
+    Headphone_retestLoopScheduler.add(RepeatAgainLoopLoopScheduler);
+    Headphone_retestLoopScheduler.add(RepeatAgainLoopLoopEnd);
+    Headphone_retestLoopScheduler.add(endLoopIteration(Headphone_retestLoopScheduler, snapshot));
+  });
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var HeadphoneLoop;
 function HeadphoneLoopLoopBegin(HeadphoneLoopLoopScheduler) {
   // set up handler to look after randomisation of conditions etc
   HeadphoneLoop = new TrialHandler({
@@ -2865,6 +2924,48 @@ function HeadphoneLoopLoopBegin(HeadphoneLoopLoopScheduler) {
 
 function HeadphoneLoopLoopEnd() {
   psychoJS.experiment.removeLoop(HeadphoneLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+var RepeatAgainLoop;
+function RepeatAgainLoopLoopBegin(RepeatAgainLoopLoopScheduler) {
+  // set up handler to look after randomisation of conditions etc
+  RepeatAgainLoop = new TrialHandler({
+    psychoJS: psychoJS,
+    nReps: repeatagainOn, method: TrialHandler.Method.RANDOM,
+    extraInfo: expInfo, originPath: undefined,
+    trialList: undefined,
+    seed: undefined, name: 'RepeatAgainLoop'
+  });
+  psychoJS.experiment.addLoop(RepeatAgainLoop); // add the loop to the experiment
+  currentLoop = RepeatAgainLoop;  // we're now the current loop
+
+  // Schedule all the trials in the trialList:
+  RepeatAgainLoop.forEach(function() {
+    const snapshot = RepeatAgainLoop.getSnapshot();
+
+    RepeatAgainLoopLoopScheduler.add(importConditions(snapshot));
+    RepeatAgainLoopLoopScheduler.add(RepeatAgainRoutineBegin(snapshot));
+    RepeatAgainLoopLoopScheduler.add(RepeatAgainRoutineEachFrame(snapshot));
+    RepeatAgainLoopLoopScheduler.add(RepeatAgainRoutineEnd(snapshot));
+    RepeatAgainLoopLoopScheduler.add(endLoopIteration(RepeatAgainLoopLoopScheduler, snapshot));
+  });
+
+  return Scheduler.Event.NEXT;
+}
+
+
+function RepeatAgainLoopLoopEnd() {
+  psychoJS.experiment.removeLoop(RepeatAgainLoop);
+
+  return Scheduler.Event.NEXT;
+}
+
+
+function Headphone_retestLoopEnd() {
+  psychoJS.experiment.removeLoop(Headphone_retest);
 
   return Scheduler.Event.NEXT;
 }
@@ -3948,6 +4049,7 @@ function HeadphonePlayRoutineEnd(snapshot) {
     CheckResp.stop();
     if ((CheckResp.corr === 1)) {
         message = "CORRECT";
+        headphonecorrect += 1;
     } else {
         message = "INCORRECT";
     }
@@ -4040,6 +4142,205 @@ function HeadphoneFeedbackRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     });
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+var Rest_codeComponents;
+function Rest_codeRoutineBegin(snapshot) {
+  return function () {
+    //------Prepare to start Routine 'Rest_code'-------
+    t = 0;
+    Rest_codeClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    // keep track of which components have finished
+    Rest_codeComponents = [];
+    
+    Rest_codeComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function Rest_codeRoutineEachFrame(snapshot) {
+  return function () {
+    //------Loop for each frame of Routine 'Rest_code'-------
+    // get current time
+    t = Rest_codeClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    Rest_codeComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+var repeatagainOn;
+function Rest_codeRoutineEnd(snapshot) {
+  return function () {
+    //------Ending Routine 'Rest_code'-------
+    Rest_codeComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    repeatagainOn = 1;
+    if ((headphonecorrect > 4)) {
+        Headphone_retest.finished = true;
+        repeatagainOn = 0;
+    } else {
+        repeatagainOn = 1;
+        headphonecorrect = 0;
+    }
+    
+    // the Routine "Rest_code" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    return Scheduler.Event.NEXT;
+  };
+}
+
+
+var _RepeatAgainKey_allKeys;
+var RepeatAgainComponents;
+function RepeatAgainRoutineBegin(snapshot) {
+  return function () {
+    //------Prepare to start Routine 'RepeatAgain'-------
+    t = 0;
+    RepeatAgainClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    RepeatAgainKey.keys = undefined;
+    RepeatAgainKey.rt = undefined;
+    _RepeatAgainKey_allKeys = [];
+    // keep track of which components have finished
+    RepeatAgainComponents = [];
+    RepeatAgainComponents.push(RepeatAgainMssg);
+    RepeatAgainComponents.push(RepeatAgainKey);
+    
+    RepeatAgainComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+       });
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function RepeatAgainRoutineEachFrame(snapshot) {
+  return function () {
+    //------Loop for each frame of Routine 'RepeatAgain'-------
+    // get current time
+    t = RepeatAgainClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *RepeatAgainMssg* updates
+    if (t >= 0.0 && RepeatAgainMssg.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      RepeatAgainMssg.tStart = t;  // (not accounting for frame time here)
+      RepeatAgainMssg.frameNStart = frameN;  // exact frame index
+      
+      RepeatAgainMssg.setAutoDraw(true);
+    }
+
+    
+    // *RepeatAgainKey* updates
+    if (t >= 0.0 && RepeatAgainKey.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      RepeatAgainKey.tStart = t;  // (not accounting for frame time here)
+      RepeatAgainKey.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { RepeatAgainKey.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { RepeatAgainKey.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { RepeatAgainKey.clearEvents(); });
+    }
+
+    if (RepeatAgainKey.status === PsychoJS.Status.STARTED) {
+      let theseKeys = RepeatAgainKey.getKeys({keyList: ['space'], waitRelease: false});
+      _RepeatAgainKey_allKeys = _RepeatAgainKey_allKeys.concat(theseKeys);
+      if (_RepeatAgainKey_allKeys.length > 0) {
+        RepeatAgainKey.keys = _RepeatAgainKey_allKeys[_RepeatAgainKey_allKeys.length - 1].name;  // just the last key pressed
+        RepeatAgainKey.rt = _RepeatAgainKey_allKeys[_RepeatAgainKey_allKeys.length - 1].rt;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    RepeatAgainComponents.forEach( function(thisComponent) {
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+      }
+    });
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function RepeatAgainRoutineEnd(snapshot) {
+  return function () {
+    //------Ending Routine 'RepeatAgain'-------
+    RepeatAgainComponents.forEach( function(thisComponent) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    });
+    psychoJS.experiment.addData('RepeatAgainKey.keys', RepeatAgainKey.keys);
+    if (typeof RepeatAgainKey.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('RepeatAgainKey.rt', RepeatAgainKey.rt);
+        routineTimer.reset();
+        }
+    
+    RepeatAgainKey.stop();
+    // the Routine "RepeatAgain" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
     return Scheduler.Event.NEXT;
   };
 }
@@ -10288,6 +10589,8 @@ function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  
+  
   
   
   
