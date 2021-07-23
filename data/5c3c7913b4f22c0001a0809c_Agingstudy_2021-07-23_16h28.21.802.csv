@@ -1,0 +1,7 @@
+Welcome0Continue.keys,Welcome0Continue.rt,SoundCheckBegin.keys,SoundCheckBegin.rt,SoundCheckEndKey.keys,SoundCheckEndKey.rt,HeadphoneContinueKey.keys,HeadphoneContinueKey.rt,CheckResp.keys,CheckResp.corr,CheckResp.rt,HeadphoneLoop.thisRepN,HeadphoneLoop.thisTrialN,HeadphoneLoop.thisN,HeadphoneLoop.thisIndex,HeadphoneLoop.ran,File,Correct,participant,date,expName,psychopyVersion,OS,frameRate
+space,6.497955,space,4.063905,space,2.82912,space,102.30608,2,1,1.52454,0,0,0,2,1,Headphone/t2_1.wav,2,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
+,,,,,,,,3,1,0.43419,0,1,1,4,1,Headphone/t3_1.wav,3,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
+,,,,,,,,1,1,0.404595,0,2,2,1,1,Headphone/t1_2.wav,1,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
+,,,,,,,,3,1,0.469435,0,3,3,5,1,Headphone/t3_2.wav,3,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
+,,,,,,,,2,1,0.468925,0,4,4,3,1,Headphone/t2_2.wav,2,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
+,,,,,,,,1,1,0.358025,0,5,5,0,1,Headphone/t1_1.wav,1,5c3c7913b4f22c0001a0809c,2021-07-23_16h28.21.802,Agingstudy,2020.2.10,Linux x86_64,60
