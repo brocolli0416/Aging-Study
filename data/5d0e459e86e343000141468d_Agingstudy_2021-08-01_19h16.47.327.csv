@@ -1,0 +1,3 @@
+Welcome0Continue.keys,Welcome0Continue.rt,SoundCheckBegin.keys,SoundCheckBegin.rt,SoundCheckEndKey.keys,SoundCheckEndKey.rt,HeadphoneContinueKey.keys,HeadphoneContinueKey.rt,CheckResp.keys,CheckResp.corr,CheckResp.rt,HeadphoneLoop.thisRepN,HeadphoneLoop.thisTrialN,HeadphoneLoop.thisN,HeadphoneLoop.thisIndex,HeadphoneLoop.ran,File,Correct,participant,date,expName,psychopyVersion,OS,frameRate
+space,11.2084,space,6.1736,space,3.2647,space,11.2816,1,1,4.3863,0,0,0,0,1,Headphone/t1_1.wav,1,5d0e459e86e343000141468d,2021-08-01_19h16.47.327,Agingstudy,2020.2.10,Win32,60
+,,,,,,,,1,0,1.893,0,1,1,2,1,Headphone/t2_1.wav,2,5d0e459e86e343000141468d,2021-08-01_19h16.47.327,Agingstudy,2020.2.10,Win32,60
